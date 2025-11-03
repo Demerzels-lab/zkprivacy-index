@@ -5,6 +5,207 @@ document.addEventListener('DOMContentLoaded', function() {
         lucide.createIcons();
     }
 
+    // Hide main content initially
+    const mainContent = document.getElementById('main-content');
+    const showAllAssetsBtn = document.getElementById('show-all-assets');
+    
+    // Handle "All Privacy Assets" button click
+    if (showAllAssetsBtn) {
+        showAllAssetsBtn.addEventListener('click', function() {
+            // Add smooth reveal animation
+            mainContent.style.opacity = '0';
+            mainContent.style.transform = 'translateY(20px)';
+            mainContent.style.display = 'block';
+            
+            // Trigger the reveal animation
+            setTimeout(() => {
+                mainContent.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                mainContent.style.opacity = '1';
+                mainContent.style.transform = 'translateY(0)';
+                
+                // Initialize all features when content is revealed
+                initializeAllFeatures();
+            }, 100);
+            
+            // Scroll to content smoothly
+            setTimeout(() => {
+                mainContent.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        });
+    }
+
+    // Initialize all features (only when content is shown)
+    function initializeAllFeatures() {
+        // Initialize privacy cards
+        renderPrivacyCards();
+        
+        // Initialize comparison table
+        renderComparisonTable();
+        
+        // Start real-time price updates
+        fetchRealTimePrices();
+        setInterval(fetchRealTimePrices, 30000); // Update every 30 seconds
+        
+        // Setup search functionality
+        setupSearch();
+        
+        // Setup category filtering
+        setupCategoryFiltering();
+    }
+
+    // Setup search functionality
+    function setupSearch() {
+        const searchInput = document.getElementById('crypto-search');
+        const searchBtn = searchInput?.nextElementSibling;
+        
+        if (!searchInput || !searchBtn) return;
+
+        // Search input event
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            filterPrivacyCards(query);
+        });
+
+        // Search button click
+        searchBtn.addEventListener('click', function() {
+            const query = searchInput.value.toLowerCase().trim();
+            filterPrivacyCards(query);
+        });
+
+        // Enter key in search input
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.toLowerCase().trim();
+                filterPrivacyCards(query);
+            }
+        });
+    }
+
+    // Setup category filtering
+    function setupCategoryFiltering() {
+        const quickActions = document.querySelectorAll('.quick-action');
+        
+        quickActions.forEach(action => {
+            action.addEventListener('click', function() {
+                // Remove active class from all actions
+                quickActions.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked action
+                this.classList.add('active');
+                
+                // Get category and filter cards
+                const category = this.dataset.category;
+                filterByCategory(category);
+            });
+        });
+    }
+
+    // Filter privacy cards by search query
+    function filterPrivacyCards(query) {
+        const cards = document.querySelectorAll('.privacy-card');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            const ticker = card.querySelector('.coin-ticker')?.textContent.toLowerCase() || '';
+            const features = card.querySelector('.features-list')?.textContent.toLowerCase() || '';
+            
+            const matches = query === '' || title.includes(query) || ticker.includes(query) || features.includes(query);
+            
+            if (matches) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeIn 0.3s ease';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Show/hide no results message
+        showNoResults(visibleCount === 0 && query !== '');
+    }
+
+    // Filter privacy cards by category
+    function filterByCategory(category) {
+        const cards = document.querySelectorAll('.privacy-card');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+                card.style.animation = 'fadeIn 0.3s ease';
+                visibleCount++;
+                return;
+            }
+            
+            // Check if card matches category
+            const ticker = card.querySelector('.coin-ticker')?.textContent || '';
+            const features = card.querySelector('.features-list')?.textContent || '';
+            
+            let matches = false;
+            
+            switch(category) {
+                case 'coins':
+                    matches = privacyCoins.some(coin => 
+                        coin.ticker === ticker && 
+                        (coin.features.includes('Ring Signatures') || 
+                         coin.features.includes('zk-SNARKs') ||
+                         coin.features.includes('Mimblewimble'))
+                    );
+                    break;
+                case 'mixers':
+                    matches = ticker.includes('MIX') || features.includes('Mix');
+                    break;
+                case 'protocols':
+                    matches = features.includes('Protocol') || features.includes('Network');
+                    break;
+            }
+            
+            if (matches) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeIn 0.3s ease';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Show/hide no results message
+        showNoResults(visibleCount === 0 && category !== 'all');
+    }
+
+    // Show no results message
+    function showNoResults(show) {
+        let noResultsDiv = document.getElementById('no-results');
+        
+        if (show) {
+            if (!noResultsDiv) {
+                noResultsDiv = document.createElement('div');
+                noResultsDiv.id = 'no-results';
+                noResultsDiv.className = 'no-results';
+                noResultsDiv.innerHTML = `
+                    <div class="no-results-content">
+                        <i data-lucide="search"></i>
+                        <h3>No assets found</h3>
+                        <p>Try adjusting your search or browse all categories</p>
+                    </div>
+                `;
+                
+                const privacyGrid = document.getElementById('privacy-grid');
+                privacyGrid.appendChild(noResultsDiv);
+                
+                // Initialize icons
+                if (typeof lucide !== 'undefined') {
+                    setTimeout(() => lucide.createIcons(), 0);
+                }
+            }
+        } else {
+            if (noResultsDiv) {
+                noResultsDiv.remove();
+            }
+        }
+    }
+
     // Privacy coins with real API IDs
     const privacyCoins = [
         {

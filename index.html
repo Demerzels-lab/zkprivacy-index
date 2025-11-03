@@ -33,132 +33,180 @@
                     </div>
                 </div>
 
-                <!-- Quick Actions -->
-                <div class="quick-actions">
-                    <button class="quick-action active" data-category="all">All Privacy Assets</button>
-                    <button class="quick-action" data-category="coins">Privacy Coins</button>
-                    <button class="quick-action" data-category="mixers">Mixing Services</button>
-                    <button class="quick-action" data-category="protocols">Privacy Protocols</button>
+                <!-- Main CTA -->
+                <div class="main-cta-section">
+                    <div class="cta-card">
+                        <h3>Explore Privacy-Focused Cryptocurrencies</h3>
+                        <p>Discover verified privacy coins, mixing services, and ZK-powered protocols with comprehensive scoring and real-time data.</p>
+                        <div class="cta-features">
+                            <div class="cta-feature">
+                                <i data-lucide="shield-check"></i>
+                                <span>Zero-Knowledge Verified</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i data-lucide="trending-up"></i>
+                                <span>Real-time Price Data</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i data-lucide="users"></i>
+                                <span>Community Ratings</span>
+                            </div>
+                        </div>
+                        <button class="main-cta-btn" id="show-all-assets">
+                            <span>All Privacy Assets</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Intro Explanation -->
+                <div class="intro-explanation">
+                    <div class="explanation-grid">
+                        <div class="explanation-card">
+                            <div class="explanation-icon">
+                                <i data-lucide="coins"></i>
+                            </div>
+                            <h4>Privacy Coins</h4>
+                            <p>Cryptocurrencies with built-in privacy features like ring signatures, stealth addresses, and confidential transactions.</p>
+                        </div>
+                        <div class="explanation-card">
+                            <div class="explanation-icon">
+                                <i data-lucide="shuffle"></i>
+                            </div>
+                            <h4>Mixing Services</h4>
+                            <p>Protocols that obfuscate transaction trails by mixing funds from multiple users to break blockchain analysis.</p>
+                        </div>
+                        <div class="explanation-card">
+                            <div class="explanation-icon">
+                                <i data-lucide="key"></i>
+                            </div>
+                            <h4>Zero-Knowledge Proofs</h4>
+                            <p>Cryptographic proofs that allow verification without revealing underlying data, ensuring privacy and security.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Privacy Scores Section -->
-    <section class="privacy-scores">
-        <div class="container">
-            <div class="section-header">
-                <h2>Privacy Score Rankings</h2>
-                <p>Comprehensive analysis of privacy-focused cryptocurrencies</p>
-                <div class="no-tracking-note">
-                    <i data-lucide="shield-check"></i>
-                    <span>All data processed locally • No user tracking</span>
+    <!-- Main Content (Hidden by default) -->
+    <div class="main-content" id="main-content">
+        <!-- Privacy Scores Section -->
+        <section class="privacy-scores">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Privacy Score Rankings</h2>
+                    <p>Comprehensive analysis of privacy-focused cryptocurrencies</p>
+                    <div class="no-tracking-note">
+                        <i data-lucide="shield-check"></i>
+                        <span>All data processed locally • No user tracking</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="privacy-grid" id="privacy-grid">
-                <!-- Privacy cards will be populated by JavaScript -->
+                <div class="privacy-grid" id="privacy-grid">
+                    <!-- Privacy cards will be populated by JavaScript -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Comparison Section -->
-    <section class="comparison-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Privacy Coins Comparison</h2>
-                <p>Analyze privacy features side by side</p>
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Privacy Coins Comparison</h2>
+                    <p>Analyze privacy features side by side</p>
+                </div>
+                <div class="comparison-table" id="comparison-table">
+                    <!-- Comparison table will be populated by JavaScript -->
+                </div>
             </div>
-            <div class="comparison-table" id="comparison-table">
-                <!-- Comparison table will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ZK Verification Section -->
-    <section class="zk-verification">
-        <div class="container">
-            <div class="section-header">
-                <h2>Zero-Knowledge Verification</h2>
-                <p>Verify privacy claims with cryptographic proofs</p>
-            </div>
-            <div class="verification-grid">
-                <div class="verification-card">
-                    <h3>ZK Proof Verification</h3>
-                    <p>Verify that privacy protocols are using genuine zero-knowledge proofs</p>
-                    <div class="verification-examples">
-                        <div class="verification-item">
-                            <i data-lucide="shield-check"></i>
-                            <span>Monero - Ring Signatures Verified</span>
-                            <button class="verify-btn verified">Verified</button>
+        <!-- ZK Verification Section -->
+        <section class="zk-verification">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Zero-Knowledge Verification</h2>
+                    <p>Verify privacy claims with cryptographic proofs</p>
+                </div>
+                <div class="verification-grid">
+                    <div class="verification-card">
+                        <h3>ZK Proof Verification</h3>
+                        <p>Verify that privacy protocols are using genuine zero-knowledge proofs</p>
+                        <div class="verification-examples">
+                            <div class="verification-item">
+                                <i data-lucide="shield-check"></i>
+                                <span>Monero - Ring Signatures Verified</span>
+                                <button class="verify-btn verified">Verified</button>
+                            </div>
+                            <div class="verification-item">
+                                <i data-lucide="shield-x"></i>
+                                <span>PrivacySwap - ZK Claims Unverified</span>
+                                <button class="verify-btn unverified">Unverified</button>
+                            </div>
                         </div>
-                        <div class="verification-item">
-                            <i data-lucide="shield-x"></i>
-                            <span>PrivacySwap - ZK Claims Unverified</span>
-                            <button class="verify-btn unverified">Unverified</button>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <h3>Anonymous Analytics</h3>
+                        <p>Crowd-sourced privacy assessments without personal data collection</p>
+                        <div class="analytics-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Anonymous Reviews</span>
+                                <span class="metric-value">12,847</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Verified Projects</span>
+                                <span class="metric-value">156</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Privacy Coins Tracked</span>
+                                <span class="metric-value">89</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="verification-card">
-                    <h3>Anonymous Analytics</h3>
-                    <p>Crowd-sourced privacy assessments without personal data collection</p>
-                    <div class="analytics-metrics">
-                        <div class="metric">
-                            <span class="metric-label">Anonymous Reviews</span>
-                            <span class="metric-value">12,847</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">Verified Projects</span>
-                            <span class="metric-value">156</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">Privacy Coins Tracked</span>
-                            <span class="metric-value">89</span>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Educational Section -->
-    <section class="education-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Privacy Education Hub</h2>
-                <p>Learn about cryptocurrency privacy for beginners</p>
+        <!-- Educational Section -->
+        <section class="education-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Privacy Education Hub</h2>
+                    <p>Learn about cryptocurrency privacy for beginners</p>
+                </div>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i data-lucide="graduation-cap"></i>
+                        </div>
+                        <h3>Privacy Coins Guide</h3>
+                        <p>Understanding how privacy coins like Monero and Zcash protect your transactions</p>
+                        <button class="learn-more">Start Learning</button>
+                    </div>
+                    
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <h3>Mixing Services 101</h3>
+                        <p>Learn about mixing services and when to use them safely</p>
+                        <button class="learn-more">Start Learning</button>
+                    </div>
+                    
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i data-lucide="key"></i>
+                        </div>
+                        <h3>ZK Proofs Explained</h3>
+                        <p>Simple explanations of zero-knowledge proofs and how they work</p>
+                        <button class="learn-more">Start Learning</button>
+                    </div>
+                </div>
             </div>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i data-lucide="graduation-cap"></i>
-                    </div>
-                    <h3>Privacy Coins Guide</h3>
-                    <p>Understanding how privacy coins like Monero and Zcash protect your transactions</p>
-                    <button class="learn-more">Start Learning</button>
-                </div>
-                
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i data-lucide="shield"></i>
-                    </div>
-                    <h3>Mixing Services 101</h3>
-                    <p>Learn about mixing services and when to use them safely</p>
-                    <button class="learn-more">Start Learning</button>
-                </div>
-                
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i data-lucide="key"></i>
-                    </div>
-                    <h3>ZK Proofs Explained</h3>
-                    <p>Simple explanations of zero-knowledge proofs and how they work</p>
-                    <button class="learn-more">Start Learning</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
