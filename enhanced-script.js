@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContent = document.getElementById('main-content');
     const showAllAssetsBtn = document.getElementById('show-all-assets');
     
-    // Handle "All Privacy Assets" button click
+    // Handle "Explore Privacy Assets" button click
     if (showAllAssetsBtn) {
         showAllAssetsBtn.addEventListener('click', function() {
             // Add smooth reveal animation
@@ -33,6 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
     }
+
+    // Handle secondary button clicks
+    const secondaryBtns = document.querySelectorAll('.secondary-btn');
+    secondaryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const btnText = this.querySelector('span').textContent;
+            
+            if (btnText === 'Documentation') {
+                // Scroll to education section or open modal
+                showDocumentationModal();
+            } else if (btnText === 'Watch Demo') {
+                // Show demo video or simulate
+                showDemoModal();
+            }
+        });
+    });
 
     // Initialize all features (only when content is shown)
     function initializeAllFeatures() {
@@ -779,6 +795,152 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the enhanced platform
     init();
+
+    // Show Documentation Modal
+    function showDocumentationModal() {
+        const modal = document.createElement('div');
+        modal.className = 'documentation-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📚 Documentation</h2>
+                    <button class="close-modal" data-lucide="x"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="docs-section">
+                        <h3>🚀 Getting Started</h3>
+                        <p>Learn how to use ZKPrivacy Index effectively with our comprehensive guide.</p>
+                        <div class="doc-links">
+                            <a href="#getting-started" class="doc-link">Quick Start Guide</a>
+                            <a href="#privacy-scores" class="doc-link">Privacy Scores Explained</a>
+                            <a href="#verification" class="doc-link">ZK Verification Process</a>
+                        </div>
+                    </div>
+                    
+                    <div class="docs-section">
+                        <h3>🔒 Privacy Features</h3>
+                        <p>Understanding our privacy-first approach and zero-knowledge verification.</p>
+                        <div class="doc-links">
+                            <a href="#zero-tracking" class="doc-link">Zero Tracking Guarantee</a>
+                            <a href="#local-processing" class="doc-link">Local Data Processing</a>
+                            <a href="#zk-proofs" class="doc-link">Zero-Knowledge Proofs</a>
+                        </div>
+                    </div>
+                    
+                    <div class="docs-section">
+                        <h3>📊 Analytics Guide</h3>
+                        <p>How to interpret privacy scores, market data, and community ratings.</p>
+                        <div class="doc-links">
+                            <a href="#scoring-system" class="doc-link">Privacy Scoring System</a>
+                            <a href="#market-analysis" class="doc-link">Market Analysis</a>
+                            <a href="#community-ratings" class="doc-link">Community Ratings</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="primary-btn">View Full Documentation</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Initialize icons
+        if (typeof lucide !== 'undefined') {
+            setTimeout(() => lucide.createIcons(), 0);
+        }
+        
+        // Show modal
+        setTimeout(() => modal.classList.add('show'), 100);
+        
+        // Close modal handlers
+        modal.querySelector('.close-modal')?.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.remove(), 300);
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
+    }
+
+    // Show Demo Modal
+    function showDemoModal() {
+        const modal = document.createElement('div');
+        modal.className = 'demo-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🎥 ZKPrivacy Index Demo</h2>
+                    <button class="close-modal" data-lucide="x"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="demo-video-container">
+                        <div class="demo-placeholder">
+                            <i data-lucide="play"></i>
+                            <h3>Interactive Demo</h3>
+                            <p>Experience real-time privacy analytics with live data updates</p>
+                            <div class="demo-features">
+                                <div class="demo-feature">
+                                    <i data-lucide="trending-up"></i>
+                                    <span>Live Price Updates</span>
+                                </div>
+                                <div class="demo-feature">
+                                    <i data-lucide="shield-check"></i>
+                                    <span>Privacy Score Verification</span>
+                                </div>
+                                <div class="demo-feature">
+                                    <i data-lucide="search"></i>
+                                    <span>Advanced Search & Filtering</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn demo-btn">
+                                <i data-lucide="play"></i>
+                                Start Interactive Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="secondary-btn">Download Demo Guide</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Initialize icons
+        if (typeof lucide !== 'undefined') {
+            setTimeout(() => lucide.createIcons(), 0);
+        }
+        
+        // Show modal
+        setTimeout(() => modal.classList.add('show'), 100);
+        
+        // Handle demo button click
+        modal.querySelector('.demo-btn')?.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.remove(), 300);
+            // Trigger main content reveal for demo
+            showAllAssetsBtn?.click();
+        });
+        
+        // Close modal handlers
+        modal.querySelector('.close-modal')?.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.remove(), 300);
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
+    }
 
     // Keep existing functions
     function populatePrivacyGrid(filter = 'all') {
