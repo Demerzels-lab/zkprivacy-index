@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
         lucide.createIcons();
     }
 
+    // Setup welcome notification close button
+    const welcomeCloseBtn = document.querySelector('#welcome-notification .close-btn');
+    if (welcomeCloseBtn) {
+        welcomeCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dismissWelcomeNotification();
+        });
+    }
+
     // Show welcome notification on every page load
     showWelcomeNotification();
 
@@ -13,25 +23,51 @@ document.addEventListener('DOMContentLoaded', function() {
         const welcomeNotification = document.getElementById('welcome-notification');
         if (!welcomeNotification) return;
 
-        // Show notification
+        // Show notification with animation
         welcomeNotification.style.display = 'flex';
-
-        // Auto-hide after 8 seconds
         setTimeout(() => {
-            dismissWelcomeNotification();
+            welcomeNotification.classList.add('show');
+        }, 100);
+
+        // Auto-hide after 8 seconds if not dismissed
+        const autoHideTimer = setTimeout(() => {
+            if (welcomeNotification.style.display !== 'none') {
+                dismissWelcomeNotification();
+            }
         }, 8000);
+
+        // Clear auto-hide timer if user manually dismisses
+        welcomeNotification.addEventListener('click', (e) => {
+            if (e.target.closest('.close-btn') || e.target.closest('.get-started-btn')) {
+                clearTimeout(autoHideTimer);
+            }
+        });
+
+        // Add ESC key listener for welcome notification
+        const welcomeEscapeHandler = (e) => {
+            if (e.key === 'Escape' && welcomeNotification.style.display !== 'none') {
+                clearTimeout(autoHideTimer);
+                dismissWelcomeNotification();
+                document.removeEventListener('keydown', welcomeEscapeHandler);
+            }
+        };
+        document.addEventListener('keydown', welcomeEscapeHandler);
     }
 
     function dismissWelcomeNotification() {
         const welcomeNotification = document.getElementById('welcome-notification');
         if (!welcomeNotification) return;
 
-        // Add slide-out animation
-        welcomeNotification.style.animation = 'slideUp 0.4s ease-out';
+        // Add dismissed class for animation
+        welcomeNotification.classList.add('dismissed');
         setTimeout(() => {
             welcomeNotification.style.display = 'none';
-        }, 400);
+            welcomeNotification.classList.remove('show', 'dismissed');
+        }, 300);
     }
+
+    // Make dismissWelcomeNotification globally available
+    window.dismissWelcomeNotification = dismissWelcomeNotification;
 
     // Hide main content initially
     const mainContent = document.getElementById('main-content');
@@ -596,18 +632,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show modal
         setTimeout(() => modal.classList.add('show'), 100);
         
-        // Close modal handlers
-        modal.querySelector('.close-modal')?.addEventListener('click', () => {
-            modal.classList.remove('show');
-            setTimeout(() => modal.remove(), 300);
-        });
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                setTimeout(() => modal.remove(), 300);
-            }
-        });
+        // Universal close modal handler
+        function setupModalCloseHandlers(modalElement) {
+            // Close button (both .close-modal and .modal-close)
+            const closeButtons = modalElement.querySelectorAll('.close-modal, .modal-close');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                });
+            });
+
+            // Click outside modal to close
+            modalElement.addEventListener('click', (e) => {
+                if (e.target === modalElement) {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                }
+            });
+
+            // Escape key to close
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
+
+        // Setup close handlers
+        setupModalCloseHandlers(modal);
     }
 
     // Create privacy card with enhanced data
@@ -782,18 +840,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show modal
         setTimeout(() => modal.classList.add('show'), 100);
         
-        // Close modal handlers
-        modal.querySelector('.close-modal')?.addEventListener('click', () => {
-            modal.classList.remove('show');
-            setTimeout(() => modal.remove(), 300);
-        });
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                setTimeout(() => modal.remove(), 300);
-            }
-        });
+        // Universal close modal handler
+        function setupModalCloseHandlers(modalElement) {
+            // Close button (both .close-modal and .modal-close)
+            const closeButtons = modalElement.querySelectorAll('.close-modal, .modal-close');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                });
+            });
+
+            // Click outside modal to close
+            modalElement.addEventListener('click', (e) => {
+                if (e.target === modalElement) {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                }
+            });
+
+            // Escape key to close
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
+
+        // Setup close handlers
+        setupModalCloseHandlers(modal);
     }
 
     // Enhanced initialization
@@ -881,18 +961,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show modal
         setTimeout(() => modal.classList.add('show'), 100);
         
-        // Close modal handlers
-        modal.querySelector('.close-modal')?.addEventListener('click', () => {
-            modal.classList.remove('show');
-            setTimeout(() => modal.remove(), 300);
-        });
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                setTimeout(() => modal.remove(), 300);
-            }
-        });
+        // Universal close modal handler
+        function setupModalCloseHandlers(modalElement) {
+            // Close button (both .close-modal and .modal-close)
+            const closeButtons = modalElement.querySelectorAll('.close-modal, .modal-close');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                });
+            });
+
+            // Click outside modal to close
+            modalElement.addEventListener('click', (e) => {
+                if (e.target === modalElement) {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                }
+            });
+
+            // Escape key to close
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
+
+        // Setup close handlers
+        setupModalCloseHandlers(modal);
     }
 
     // Show Demo Modal
@@ -956,18 +1058,40 @@ document.addEventListener('DOMContentLoaded', function() {
             showAllAssetsBtn?.click();
         });
         
-        // Close modal handlers
-        modal.querySelector('.close-modal')?.addEventListener('click', () => {
-            modal.classList.remove('show');
-            setTimeout(() => modal.remove(), 300);
-        });
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                setTimeout(() => modal.remove(), 300);
-            }
-        });
+        // Universal close modal handler
+        function setupModalCloseHandlers(modalElement) {
+            // Close button (both .close-modal and .modal-close)
+            const closeButtons = modalElement.querySelectorAll('.close-modal, .modal-close');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                });
+            });
+
+            // Click outside modal to close
+            modalElement.addEventListener('click', (e) => {
+                if (e.target === modalElement) {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                }
+            });
+
+            // Escape key to close
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    modalElement.classList.remove('show');
+                    setTimeout(() => modalElement.remove(), 300);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
+
+        // Setup close handlers
+        setupModalCloseHandlers(modal);
     }
 
     // Enhanced Anonymous Badge with Privacy Information
@@ -1035,3 +1159,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Copy existing populateComparisonTable, handleSearch, setupQuickActions, etc.
     
 });
+
+// Make key functions globally available for onclick handlers
+window.dismissWelcomeNotification = dismissWelcomeNotification;
+window.showCoinDetails = showCoinDetails;
+window.closeCoinModal = closeCoinModal;
+window.closeModal = closeModal;

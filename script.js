@@ -603,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.id = 'coin-modal';
         
         modal.innerHTML = `
-            <div class="modal-backdrop" onclick="closeCoinModal()"></div>
+            <div class="modal-backdrop"></div>
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">
@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${coin.status.charAt(0).toUpperCase() + coin.status.slice(1)}
                         </span>
                     </div>
-                    <button class="modal-close" onclick="closeCoinModal()">
+                    <button class="modal-close">
                         <i data-lucide="x"></i>
                     </button>
                 </div>
@@ -696,6 +696,9 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('show');
         }, 10);
         
+        // Setup close handlers
+        setupModalCloseHandlers(modal);
+        
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
     }
@@ -710,6 +713,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = 'auto';
             }, 300);
         }
+    }
+
+    // Global close modal function for all modals
+    function closeModal(modalElement) {
+        if (modalElement) {
+            modalElement.classList.remove('show');
+            setTimeout(() => {
+                modalElement.remove();
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+    }
+
+    // Universal modal close handler
+    function setupModalCloseHandlers(modal) {
+        // Close button (both .close-modal and .modal-close)
+        const closeButtons = modal.querySelectorAll('.close-modal, .modal-close');
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                closeModal(modal);
+            });
+        });
+
+        // Click outside modal to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal);
+            }
+        });
+
+        // Escape key to close
+        const escapeHandler = (e) => {
+            if (e.key === 'Escape') {
+                closeModal(modal);
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        };
+        document.addEventListener('keydown', escapeHandler);
     }
 
     // Populate comparison table
@@ -1137,12 +1180,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add keyboard shortcuts
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            // Close any open modals
-            const modal = document.getElementById('coin-modal');
-            if (modal) {
-                closeCoinModal();
-            } else {
-                // Clear search if modal is not open
+            // Close any open modals (most recent first)
+            const modals = [
+                'coin-modal',
+                'coin-details-modal', 
+                'launch-modal',
+                'documentation-modal',
+                'demo-modal'
+            ];
+            
+            let modalClosed = false;
+            for (const modalId of modals) {
+                const modal = document.getElementById(modalId) || 
+                             document.querySelector(`.${modalId}`);
+                if (modal) {
+                    if (modalId === 'coin-modal') {
+                        closeCoinModal();
+                    } else {
+                        closeModal(modal);
+                    }
+                    modalClosed = true;
+                    break;
+                }
+            }
+            
+            if (!modalClosed) {
+                // Clear search if no modal is open
                 const searchInput = document.getElementById('crypto-search');
                 if (searchInput && searchInput.value) {
                     searchInput.value = '';
