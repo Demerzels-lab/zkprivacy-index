@@ -56,24 +56,95 @@ body {
   padding: 0 var(--space-xl);
 }
 
-/* Anonymous Badge */
-.anonymous-badge {
+/* Welcome Notification */
+.welcome-notification {
   position: fixed;
-  top: var(--space-lg);
-  right: var(--space-lg);
-  background: var(--neutral-800);
-  border: 1px solid var(--neutral-600);
-  border-radius: var(--radius-full);
-  padding: var(--space-xs) var(--space-sm);
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: var(--neutral-900);
+  border: 1px solid var(--primary-500);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 209, 255, 0.3);
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.welcome-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.welcome-notification .notification-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.welcome-notification i {
+  width: 20px;
+  height: 20px;
+  color: var(--primary-500);
+  animation: pulse 2s infinite;
+}
+
+.welcome-notification .notification-text {
+  flex: 1;
+  color: var(--neutral-400);
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.4;
+}
+
+.welcome-notification .close-btn {
+  background: transparent;
+  border: none;
   color: var(--neutral-600);
-  z-index: 1000;
-  cursor: help;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.welcome-notification .close-btn:hover {
+  background: var(--neutral-800);
+  color: var(--neutral-400);
+}
+
+.welcome-notification .close-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+.welcome-notification .get-started-btn {
+  background: var(--primary-500);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--neutral-950);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.welcome-notification .get-started-btn:hover {
+  background: var(--primary-700);
+  transform: translateY(-1px);
 }
 
 .privacy-tooltip {

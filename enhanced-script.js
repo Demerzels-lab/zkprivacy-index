@@ -5,6 +5,39 @@ document.addEventListener('DOMContentLoaded', function() {
         lucide.createIcons();
     }
 
+    // Show welcome notification on every page load
+    showWelcomeNotification();
+
+    // Welcome Notification Functions
+    function showWelcomeNotification() {
+        const welcomeNotification = document.querySelector('.welcome-notification');
+        if (!welcomeNotification) return;
+
+        // Show notification with animation
+        setTimeout(() => {
+            welcomeNotification.classList.add('show');
+        }, 1000);
+
+        // Auto-hide after 8 seconds
+        setTimeout(() => {
+            dismissWelcomeNotification();
+        }, 8000);
+    }
+
+    function dismissWelcomeNotification() {
+        const welcomeNotification = document.querySelector('.welcome-notification');
+        if (!welcomeNotification) return;
+
+        // Add slide-out animation
+        welcomeNotification.style.transform = 'translateX(-50%) translateY(-100px)';
+        welcomeNotification.style.opacity = '0';
+        
+        // Remove notification after animation
+        setTimeout(() => {
+            welcomeNotification.remove();
+        }, 400);
+    }
+
     // Hide main content initially
     const mainContent = document.getElementById('main-content');
     const showAllAssetsBtn = document.getElementById('show-all-assets');
