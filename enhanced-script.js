@@ -94,22 +94,35 @@ document.addEventListener('DOMContentLoaded', function(): void {
     const mainContent = document.getElementById('main-content');
     const showAllAssetsBtn = document.getElementById('show-all-assets');
     
-    // Make main content visible immediately
+    // Hide main content initially - user must click to explore
     if (mainContent) {
-        mainContent.style.display = 'block';
-        mainContent.style.opacity = '1';
-        mainContent.style.transform = 'translateY(0)';
-        
-        // Initialize all features immediately
-        initializeAllFeatures();
+        mainContent.style.display = 'none';
+        mainContent.style.opacity = '0';
+        mainContent.style.transform = 'translateY(20px)';
     }
     
-    // Handle "Explore Privacy Assets" button click - show ranking modal
+    // Handle "Explore Privacy Assets" button click - show main content and scroll
     if (showAllAssetsBtn) {
         showAllAssetsBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            // Show privacy asset ranking modal
-            showPrivacyRankingModal();
+            
+            // Show main content with animation
+            if (mainContent) {
+                mainContent.style.display = 'block';
+                mainContent.style.opacity = '1';
+                mainContent.style.transform = 'translateY(0)';
+                
+                // Initialize features when content is shown
+                initializeAllFeatures();
+                
+                // Scroll to main content smoothly
+                setTimeout(() => {
+                    mainContent.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
         });
     }
 
