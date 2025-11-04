@@ -73,8 +73,71 @@
         </div>
     </header>
 
-    <!-- Main Content (Hidden by default) -->
+    <!-- Main Content -->
     <div class="main-content" id="main-content">
+        
+        <!-- Documentation Quick Access -->
+        <section class="documentation-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Platform Documentation</h2>
+                    <p>Everything you need to know about ZKPrivacy Index features and privacy analytics</p>
+                </div>
+                
+                <div class="docs-grid">
+                    <div class="doc-card" data-doc="getting-started">
+                        <div class="doc-icon">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <h3>Getting Started</h3>
+                        <p>Learn how to use ZKPrivacy Index effectively with our comprehensive guide and quick start tips.</p>
+                        <div class="doc-topics">
+                            <span class="topic-tag">Quick Start Guide</span>
+                            <span class="topic-tag">Privacy Scores</span>
+                            <span class="topic-tag">ZK Verification</span>
+                        </div>
+                        <button class="doc-cta-btn" onclick="showGettingStartedModal()">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="doc-card" data-doc="privacy-features">
+                        <div class="doc-icon">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <h3>Privacy Features</h3>
+                        <p>Understanding our privacy-first approach and zero-knowledge verification systems.</p>
+                        <div class="doc-topics">
+                            <span class="topic-tag">Zero Tracking</span>
+                            <span class="topic-tag">Local Processing</span>
+                            <span class="topic-tag">ZK Proofs</span>
+                        </div>
+                        <button class="doc-cta-btn" onclick="showPrivacyFeaturesModal()">
+                            <span>Explore Privacy</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="doc-card" data-doc="analytics">
+                        <div class="doc-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3>Analytics Guide</h3>
+                        <p>Master privacy scores, market analysis, and community ratings interpretation.</p>
+                        <div class="doc-topics">
+                            <span class="topic-tag">Scoring System</span>
+                            <span class="topic-tag">Market Analysis</span>
+                            <span class="topic-tag">Community Ratings</span>
+                        </div>
+                        <button class="doc-cta-btn" onclick="showAnalyticsGuideModal()">
+                            <span>View Analytics</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- How ZKPrivacy Index Works -->
         <section class="how-it-works">

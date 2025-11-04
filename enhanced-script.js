@@ -69,32 +69,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make dismissWelcomeNotification globally available
     window.dismissWelcomeNotification = dismissWelcomeNotification;
 
-    // Hide main content initially
+    // Show main content by default
     const mainContent = document.getElementById('main-content');
     const showAllAssetsBtn = document.getElementById('show-all-assets');
     
-    // Handle "Explore Privacy Assets" button click
+    // Make main content visible immediately
+    if (mainContent) {
+        mainContent.style.display = 'block';
+        mainContent.style.opacity = '1';
+        mainContent.style.transform = 'translateY(0)';
+        
+        // Initialize all features immediately
+        initializeAllFeatures();
+    }
+    
+    // Handle "Explore Privacy Assets" button click for smooth scroll
     if (showAllAssetsBtn) {
         showAllAssetsBtn.addEventListener('click', function() {
-            // Add smooth reveal animation
-            mainContent.style.opacity = '0';
-            mainContent.style.transform = 'translateY(20px)';
-            mainContent.style.display = 'block';
-            
-            // Trigger the reveal animation
-            setTimeout(() => {
-                mainContent.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                mainContent.style.opacity = '1';
-                mainContent.style.transform = 'translateY(0)';
-                
-                // Initialize all features when content is revealed
-                initializeAllFeatures();
-            }, 100);
-            
-            // Scroll to content smoothly
-            setTimeout(() => {
-                mainContent.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
+            // Scroll to privacy scores section smoothly
+            const privacySection = document.querySelector('.privacy-scores');
+            if (privacySection) {
+                privacySection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 
@@ -1161,6 +1157,193 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Make key functions globally available for onclick handlers
+window.dismissWelcomeNotification = dismissWelcomeNotification;
+window.closeModal = closeModal;
+window.setupModalCloseHandlers = setupModalCloseHandlers;
+
+// Documentation modal functions
+function showGettingStartedModal() {
+    const modal = document.createElement('div');
+    modal.className = 'documentation-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Getting Started Guide</h2>
+                <button class="close-modal" data-lucide="x"></button>
+            </div>
+            <div class="modal-body">
+                <div class="docs-section">
+                    <h3>🚀 Quick Start Guide</h3>
+                    <p>Welcome to ZKPrivacy Index! Here's how to get started:</p>
+                    <ol class="step-list">
+                        <li>Browse privacy assets in the ranking section</li>
+                        <li>Click on any coin to view detailed privacy scores</li>
+                        <li>Use filters to find specific types of privacy coins</li>
+                        <li>Track real-time updates and market changes</li>
+                    </ol>
+                </div>
+                
+                <div class="docs-section">
+                    <h3>🔍 Understanding Privacy Scores</h3>
+                    <p>Privacy scores range from 0-10 and evaluate:</p>
+                    <ul class="feature-list">
+                        <li><strong>Protocol Security:</strong> Cryptographic strength and audit results</li>
+                        <li><strong>Privacy Features:</strong> Anonymous transactions and mixing capabilities</li>
+                        <li><strong>Decentralization:</strong> Network distribution and governance</li>
+                        <li><strong>Community Trust:</strong> Developer activity and user adoption</li>
+                    </ul>
+                </div>
+                
+                <div class="docs-section">
+                    <h3>✅ ZK Verification Process</h3>
+                    <p>Our zero-knowledge verification ensures data accuracy without compromising privacy:</p>
+                    <ul class="feature-list">
+                        <li>Cryptographic proofs validate all privacy claims</li>
+                        <li>No personal data is collected or transmitted</li>
+                        <li>All verification happens client-side</li>
+                        <li>Results are reproducible and auditable</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showDocumentationModal()">View Full Documentation</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    setupModalCloseHandlers(modal);
+    setTimeout(() => modal.classList.add('show'), 100);
+}
+
+function showPrivacyFeaturesModal() {
+    const modal = document.createElement('div');
+    modal.className = 'documentation-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Features & Security</h2>
+                <button class="close-modal" data-lucide="x"></button>
+            </div>
+            <div class="modal-body">
+                <div class="docs-section">
+                    <h3>🚫 Zero Tracking Guarantee</h3>
+                    <p>We operate on a strict no-tracking policy:</p>
+                    <ul class="feature-list">
+                        <li>No cookies, no beacons, no analytics scripts</li>
+                        <li>No IP logging or fingerprinting</li>
+                        <li>No user accounts or registration required</li>
+                        <li>Complete anonymity for all visitors</li>
+                    </ul>
+                </div>
+                
+                <div class="docs-section">
+                    <h3>💻 Local Data Processing</h3>
+                    <p>All data processing happens on your device:</p>
+                    <ul class="feature-list">
+                        <li>No data sent to external servers</li>
+                        <li>All calculations performed locally</li>
+                        <li>Public blockchain data fetched directly</li>
+                        <li>Your privacy remains completely protected</li>
+                    </ul>
+                </div>
+                
+                <div class="docs-section">
+                    <h3>🧠 Zero-Knowledge Proofs</h3>
+                    <p>Advanced cryptographic verification without data exposure:</p>
+                    <ul class="feature-list">
+                        <li>Verify claims without revealing underlying data</li>
+                        <li>Mathematical proofs of privacy protocol effectiveness</li>
+                        <li>Immutable verification results</li>
+                        <li>Privacy-preserving audits and reviews</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showDocumentationModal()">View Full Documentation</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    setupModalCloseHandlers(modal);
+    setTimeout(() => modal.classList.add('show'), 100);
+}
+
+function showAnalyticsGuideModal() {
+    const modal = document.createElement('div');
+    modal.className = 'documentation-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Analytics & Data Interpretation</h2>
+                <button class="close-modal" data-lucide="x"></button>
+            </div>
+            <div class="modal-body">
+                <div class="docs-section">
+                    <h3>📊 Privacy Scoring System</h3>
+                    <p>Our comprehensive scoring methodology evaluates:</p>
+                    <div class="scoring-breakdown">
+                        <div class="score-factor">
+                            <span class="factor-name">Protocol Security</span>
+                            <span class="factor-weight">30%</span>
+                        </div>
+                        <div class="score-factor">
+                            <span class="factor-name">Privacy Features</span>
+                            <span class="factor-weight">25%</span>
+                        </div>
+                        <div class="score-factor">
+                            <span class="factor-name">Decentralization</span>
+                            <span class="factor-weight">20%</span>
+                        </div>
+                        <div class="score-factor">
+                            <span class="factor-name">Community Trust</span>
+                            <span class="factor-weight">15%</span>
+                        </div>
+                        <div class="score-factor">
+                            <span class="factor-name">Development Activity</span>
+                            <span class="factor-weight">10%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="docs-section">
+                    <h3>📈 Market Analysis</h3>
+                    <p>Understanding market trends and privacy coin performance:</p>
+                    <ul class="feature-list">
+                        <li><strong>Price Correlation:</strong> How privacy features affect market value</li>
+                        <li><strong>Volume Patterns:</strong> Trading activity and market health indicators</li>
+                        <li><strong>Adoption Metrics:</strong> Real usage and integration growth</li>
+                        <li><strong>Technical Analysis:</strong> Chart patterns and momentum indicators</li>
+                    </ul>
+                </div>
+                
+                <div class="docs-section">
+                    <h3>👥 Community Ratings</h3>
+                    <p>Community-driven insights and expert validations:</p>
+                    <ul class="feature-list">
+                        <li>Anonymous community contributions</li>
+                        <li>Expert verifications and audits</li>
+                        <li>Developer activity monitoring</li>
+                        <li>User experience feedback aggregation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showDocumentationModal()">View Full Documentation</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    setupModalCloseHandlers(modal);
+    setTimeout(() => modal.classList.add('show'), 100);
+}
+
+// Make documentation functions globally available
+window.showGettingStartedModal = showGettingStartedModal;
+window.showPrivacyFeaturesModal = showPrivacyFeaturesModal;
+window.showAnalyticsGuideModal = showAnalyticsGuideModal;
 window.dismissWelcomeNotification = dismissWelcomeNotification;
 window.showCoinDetails = showCoinDetails;
 window.closeCoinModal = closeCoinModal;
