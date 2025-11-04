@@ -32,12 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
             welcomeNotification.style.display = 'none';
         }, 400);
     }
-        
-        // Remove notification after animation
-        setTimeout(() => {
-            welcomeNotification.remove();
-        }, 400);
-    }
 
     // Hide main content initially
     const mainContent = document.getElementById('main-content');
