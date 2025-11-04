@@ -40,7 +40,11 @@ document.addEventListener('DOMContentLoaded', function(): void {
     showWelcomeNotification();
     
     // Show launch notifications early (after welcome)
-    setTimeout(showLaunchNotifications, 1000);
+    setTimeout(() => {
+        if (typeof showLaunchNotifications === 'function') {
+            showLaunchNotifications();
+        }
+    }, 1000);
 
     // Welcome Notification Functions
     function showWelcomeNotification() {
@@ -1444,7 +1448,7 @@ function showPrivacyRankingModal() {
 
 function populateRankingData(modal) {
     const rankingList = modal.querySelector('#ranking-list');
-    const coins = [...privacyCoins].sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+    const coins = [...privacyCoins].sort((a, b) => b.score - a.score);
     
     rankingList.innerHTML = coins.map((coin, index) => `
         <div class="ranking-item" data-score="${coin.score}">
@@ -1455,7 +1459,7 @@ function populateRankingData(modal) {
                 <div class="coin-avatar">${coin.logo}</div>
                 <div class="coin-details">
                     <h3>${coin.name}</h3>
-                    <p class="coin-category">${coin.category}</p>
+                    <p class="coin-category">${coin.launchStatus === 'pre_launch' ? 'Pre-Launch' : coin.launchStatus === 'launching_soon' ? 'Launching Soon' : 'Active'}</p>
                 </div>
             </div>
             <div class="ranking-metrics">
@@ -1463,9 +1467,9 @@ function populateRankingData(modal) {
                     <span class="score-value">${coin.score}</span>
                     <span class="score-max">/10</span>
                 </div>
-                <div class="coin-status ${coin.status}">
-                    <i data-lucide="${coin.status === 'active' ? 'check-circle' : 'clock'}"></i>
-                    <span>${coin.status}</span>
+                <div class="coin-status ${coin.launchStatus}">
+                    <i data-lucide="${coin.launchStatus === 'active' ? 'check-circle' : 'clock'}"></i>
+                    <span>${coin.launchStatus === 'active' ? 'Active' : coin.launchStatus === 'launching_soon' ? 'Launching Soon' : 'Pre-Launch'}</span>
                 </div>
             </div>
             <div class="ranking-actions">
