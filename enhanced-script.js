@@ -942,6 +942,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Enhanced Anonymous Badge with Privacy Information
+    function setupPrivacyBadge() {
+        const badge = document.querySelector('[data-privacy-info]');
+        if (!badge) return;
+
+        // Add click event to show privacy details
+        badge.addEventListener('click', function() {
+            const tooltip = this.querySelector('.privacy-tooltip');
+            if (tooltip) {
+                tooltip.style.opacity = tooltip.style.opacity === '1' ? '0' : '1';
+                tooltip.style.visibility = tooltip.style.visibility === 'visible' ? 'hidden' : 'visible';
+                tooltip.style.transform = tooltip.style.transform === 'translateY(0px)' ? 'translateY(-10px)' : 'translateY(0px)';
+            }
+        });
+
+        // Hide tooltip when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!badge.contains(event.target)) {
+                const tooltip = badge.querySelector('.privacy-tooltip');
+                if (tooltip) {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.transform = 'translateY(-10px)';
+                }
+            }
+        });
+
+        // Enhanced hover effects
+        badge.addEventListener('mouseenter', function() {
+            this.style.borderColor = 'var(--primary-500)';
+            this.style.boxShadow = '0 4px 12px rgba(88, 217, 255, 0.3)';
+            this.style.background = 'var(--neutral-700)';
+        });
+
+        badge.addEventListener('mouseleave', function() {
+            this.style.borderColor = 'var(--neutral-600)';
+            this.style.boxShadow = '';
+            this.style.background = 'var(--neutral-800)';
+        });
+    }
+
     // Keep existing functions
     function populatePrivacyGrid(filter = 'all') {
         const grid = document.getElementById('privacy-grid');
