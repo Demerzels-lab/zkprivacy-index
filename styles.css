@@ -3797,6 +3797,515 @@ body {
   .overview-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Ranking Modal Styles */
+.ranking-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 17, 26, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.ranking-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ranking-modal .modal-content {
+  background: var(--neutral-900);
+  border: 1px solid var(--primary-500);
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 209, 255, 0.2);
+  overflow: hidden;
+}
+
+.ranking-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--neutral-800);
+  background: var(--neutral-950);
+}
+
+.ranking-modal .modal-header h2 {
+  color: var(--neutral-400);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ranking-modal .close-modal {
+  background: none;
+  border: none;
+  color: var(--neutral-400);
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.ranking-modal .close-modal:hover {
+  background: var(--neutral-800);
+  color: var(--primary-500);
+}
+
+.ranking-modal .modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+}
+
+.ranking-modal .modal-footer {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--neutral-800);
+  background: var(--neutral-950);
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-end;
+}
+
+/* Ranking Toolbar */
+.ranking-toolbar {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--neutral-800);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: var(--neutral-800);
+  color: var(--neutral-400);
+  border: 1px solid var(--neutral-700);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: var(--neutral-700);
+  border-color: var(--primary-500);
+}
+
+.filter-btn.active {
+  background: var(--primary-500);
+  color: var(--neutral-950);
+  border-color: var(--primary-500);
+}
+
+/* Ranking List */
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ranking-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 200px 250px 120px;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--neutral-800);
+  border: 1px solid var(--neutral-700);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: all 0.2s ease;
+}
+
+.ranking-item:hover {
+  border-color: var(--primary-500);
+  box-shadow: 0 4px 12px rgba(0, 209, 255, 0.1);
+}
+
+.ranking-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.position-number {
+  font-family: var(--font-data);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-500);
+  background: var(--neutral-700);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ranking-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.coin-avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--primary-500);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-data);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neutral-950);
+}
+
+.coin-details h3 {
+  color: var(--neutral-400);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.coin-category {
+  color: var(--neutral-600);
+  font-size: 12px;
+  margin: 2px 0 0 0;
+}
+
+.coin-ticker {
+  color: var(--primary-500);
+  font-size: 11px;
+  font-family: var(--font-data);
+  margin: 0;
+  opacity: 0.8;
+}
+
+.ranking-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.privacy-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.score-value {
+  font-family: var(--font-data);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-500);
+}
+
+.score-max {
+  font-size: 12px;
+  color: var(--neutral-600);
+  font-family: var(--font-data);
+}
+
+.coin-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.coin-status.active {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--success-400);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.coin-status.pre_launch,
+.coin-status.launching_soon {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--warning-400);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* Real-time Price Data */
+.ranking-price-data {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.current-price {
+  font-family: var(--font-data);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--neutral-400);
+}
+
+.price-change {
+  font-family: var(--font-data);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.price-change.positive {
+  color: var(--success-400);
+}
+
+.price-change.negative {
+  color: var(--error-400);
+}
+
+.market-cap,
+.last-update {
+  font-size: 10px;
+  color: var(--neutral-600);
+  font-family: var(--font-data);
+}
+
+.ranking-actions {
+  display: flex;
+  gap: var(--space-xs);
+  justify-content: center;
+}
+
+.action-btn {
+  background: var(--neutral-700);
+  border: 1px solid var(--neutral-600);
+  color: var(--neutral-400);
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.action-btn:hover {
+  background: var(--primary-500);
+  border-color: var(--primary-500);
+  color: var(--neutral-950);
+}
+
+/* Launch Notification Styles */
+.launch-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--neutral-900);
+  border: 1px solid var(--primary-500);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 209, 255, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.launch-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.launch-notification .notification-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.launch-notification i {
+  color: var(--primary-500);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.launch-notification span {
+  color: var(--neutral-400);
+  font-size: 14px;
+  flex: 1;
+}
+
+.view-launches-btn {
+  background: var(--primary-500);
+  color: var(--neutral-950);
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-launches-btn:hover {
+  background: var(--primary-400);
+  transform: translateY(-1px);
+}
+
+/* Modal Styles (General) */
+.documentation-modal,
+.launch-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 17, 26, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.documentation-modal.show,
+.launch-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.documentation-modal .modal-content,
+.launch-modal .modal-content {
+  background: var(--neutral-900);
+  border: 1px solid var(--primary-500);
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 209, 255, 0.2);
+  overflow: hidden;
+}
+
+.docs-section {
+  margin-bottom: var(--space-lg);
+}
+
+.docs-section h3 {
+  color: var(--primary-500);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.docs-section p {
+  color: var(--neutral-400);
+  margin-bottom: var(--space-md);
+}
+
+.doc-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.doc-link {
+  color: var(--neutral-400);
+  text-decoration: none;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--neutral-800);
+  transition: all 0.2s ease;
+}
+
+.doc-link:hover {
+  color: var(--primary-500);
+  padding-left: var(--space-sm);
+}
+
+/* Responsive Design for Ranking Modal */
+@media (max-width: 1024px) {
+  .ranking-item {
+    grid-template-columns: 60px 1fr 150px 200px 100px;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+  
+  .ranking-price-data {
+    font-size: 12px;
+  }
+  
+  .current-price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ranking-modal .modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .ranking-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    text-align: center;
+  }
+  
+  .ranking-position,
+  .ranking-actions {
+    order: -1;
+  }
+  
+  .ranking-info {
+    justify-content: center;
+  }
+  
+  .ranking-metrics {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .ranking-price-data {
+    align-items: center;
+    text-align: center;
+  }
+}
   
   .features-grid {
     grid-template-columns: 1fr;
