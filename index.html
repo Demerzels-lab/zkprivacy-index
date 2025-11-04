@@ -11,19 +11,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Anonymous Browsing Badge -->
-    <div class="anonymous-badge" data-privacy-info>
-        <i data-lucide="eye-off"></i>
-        <span>No Tracking</span>
-        <div class="privacy-tooltip">
-            <div class="tooltip-header">Privacy Guarantee</div>
-            <div class="tooltip-content">
-                • Zero cookies & tracking<br>
-                • Client-side data processing<br>
-                • No user registration required<br>
-                • Local storage only
-            </div>
+    <!-- Welcome Notification -->
+    <div class="welcome-notification" id="welcome-notification">
+        <div class="notification-content">
+            <i data-lucide="bell"></i>
+            <span>Welcome to ZKPrivacy Index - Your privacy-focused crypto analytics platform</span>
         </div>
+        <button class="notification-action" onclick="dismissWelcomeNotification()">
+            Get Started
+        </button>
     </div>
 
     <!-- Hero Section -->
