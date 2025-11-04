@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- Force rebuild marker -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZKPrivacy Index - Privacy Crypto Ranking Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/lucide@latest/dist/umd/lucide.js" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Welcome Notification - Updated: 2025-11-04 19:06 -->
+    <div class="welcome-notification" id="welcome-notification">
+        <div class="notification-content">
+            <div class="notification-dot"></div>
+            <span class="notification-text">Welcome to ZKPrivacy Index - Your privacy-focused crypto analytics platform</span>
+        </div>
+        <button class="get-started-btn" onclick="dismissWelcomeNotification()">
+            Continue
+        </button>
+        <button class="close-btn" onclick="dismissWelcomeNotification()">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">PRIVACY CRYPTO ANALYTICS<br>FOR A NEW ERA</h1>
+                <p class="hero-subtitle">Zero-Knowledge Digital Analytics & Privacy Protocol</p>
+                <p class="hero-description">
+                    ZKPrivacy Index turns your crypto portfolio into private, secure & comprehensive analytics. 
+                    A unified platform enabling real-time tracking, privacy scores, and confidential monitoring 
+                    with seamless integration into the crypto ecosystem.
+                </p>
+                
+                <!-- Key Metrics -->
+                <div class="hero-metrics">
+                    <div class="metric-card">
+                        <div class="metric-number">9.2</div>
+                        <div class="metric-label">Privacy Score</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">&lt;1s</div>
+                        <div class="metric-label">Real-time Updates</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-label">Zero Tracking</div>
+                    </div>
+                </div>
+
+                <!-- Hero Actions -->
+                <div class="hero-actions">
+                    <button class="primary-btn" id="show-all-assets">
+                        <span>Explore Privacy Assets</span>
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                    <button class="secondary-btn" onclick="showDocumentationModal()">
+                        <i data-lucide="book"></i>
+                        <span>Documentation</span>
+                    </button>
+                    <button class="secondary-btn" onclick="showDemo()">
+                        <i data-lucide="play"></i>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        
+        <!-- Documentation Quick Access -->
+        <section class="documentation-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Platform Documentation</h2>
+                    <p>Everything you need to know about ZKPrivacy Index features and privacy analytics</p>
+                </div>
+                
+                <div class="docs-grid">
+                    <div class="doc-card" data-doc="getting-started">
+                        <div class="doc-icon">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <h3>Getting Started</h3>
+                        <p>Learn how to use ZKPrivacy Index effectively with our comprehensive guide and quick start tips.</p>
+                        <div class="doc-topics">
+                            <span class="topic-tag">Quick Start Guide</span>
+                            <span class="topic-tag">Privacy Scores</span>
+                            <span class="topic-tag">ZK Verification</span>
+                        </div>
+                        <button class="doc-cta-btn" onclick="showGettingStartedModal()">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="doc-card" data-doc="privacy-features">
+                        <div class="doc-icon">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <h3>Privacy Features</h3>
+                        <p>Understanding our privacy-first approach and zero-knowledge verification systems.</p>
+                        <div class="doc-topics">
+                            <span class="topic-tag">Zero Tracking</span>
+                            <span class="topic-tag">Local Processing</span>
+                            <span class="topic-tag">ZK Proofs</span>
+                        </div>
+                        <button class="doc-cta-btn" onclick="showPrivacyFeaturesModal()">
+                            <span>Explore Privacy</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="doc-card" data-doc="analytics">
+                        <div class="doc-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3>Analytics Guide</h3>
+                        <p>Master privacy scores, market analysis, and community ratings interpretation.</p>
+                        <div class="doc-topics">
+                            <span class="topic-tag">Scoring System</span>
+                            <span class="topic-tag">Market Analysis</span>
+                            <span class="topic-tag">Community Ratings</span>
+                        </div>
+                        <button class="doc-cta-btn" onclick="showAnalyticsGuideModal()">
+                            <span>View Analytics</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How ZKPrivacy Index Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How ZKPrivacy Index Works</h2>
+                    <p>Advanced privacy analytics with real-time tracking and zero-knowledge verification</p>
+                </div>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">
+                            <i data-lucide="search"></i>
+                        </div>
+                        <h3>Real-time Tracking</h3>
+                        <p>Monitor privacy scores, prices, and market changes across multiple privacy coins with live updates every 30 seconds.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3>Zero-Knowledge Verification</h3>
+                        <p>Verify privacy protocols using cryptographic proofs without revealing sensitive transaction data.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3>Smart Analytics</h3>
+                        <p>Get comprehensive insights with privacy scores, market analysis, and community ratings for informed decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Scores Section -->
+        <section class="privacy-scores">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Privacy Asset Rankings</h2>
+                    <p>Comprehensive analysis of privacy-focused cryptocurrencies with verified data</p>
+                    <div class="no-tracking-note">
+                        <i data-lucide="shield-check"></i>
+                        <span>All data processed locally • No user tracking</span>
+                    </div>
+                </div>
+
+                <div class="privacy-grid" id="privacy-grid">
+                    <!-- Privacy cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose ZKPrivacy Index -->
+        <section class="why-choose">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose ZKPrivacy Index</h2>
+                    <p>The most advanced privacy analytics platform for crypto investors</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="lock"></i>
+                        </div>
+                        <h3>100% Privacy First</h3>
+                        <p>No tracking, no data collection, completely anonymous browsing experience with client-side processing.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Real-time updates in under 1 second with optimized performance and efficient data processing.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <h3>Verified Data</h3>
+                        <p>All privacy scores and claims are verified through cryptographic proofs and community validation.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Community Driven</h3>
+                        <p>Powered by anonymous community contributions and expert verifications for accurate ratings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ZKPrivacy Index</h3>
+                    <p>Privacy-first cryptocurrency analytics platform</p>
+                    <div class="footer-badges">
+                        <div class="footer-badge">
+                            <i data-lucide="eye-off"></i>
+                            <span>No Cookies</span>
+                        </div>
+                        <div class="footer-badge">
+                            <i data-lucide="shield"></i>
+                            <span>Zero Tracking</span>
+                        </div>
+                        <div class="footer-badge">
+                            <i data-lucide="lock"></i>
+                            <span>Client-Side Only</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Privacy Features</h4>
+                    <ul>
+                        <li>Anonymous browsing</li>
+                        <li>Local data storage</li>
+                        <li>No registration required</li>
+                        <li>ZK proof verification</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Data Sources</h4>
+                    <ul>
+                        <li>Public blockchain explorers</li>
+                        <li>Community contributions</li>
+                        <li>Open source protocols</li>
+                        <li>Verified analytics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZKPrivacy Index. Built with privacy in mind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="enhanced-script.js"></script>
+</body>
+</html>
