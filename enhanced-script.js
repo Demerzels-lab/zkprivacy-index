@@ -10,13 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Welcome Notification Functions
     function showWelcomeNotification() {
-        const welcomeNotification = document.querySelector('.welcome-notification');
+        const welcomeNotification = document.getElementById('welcome-notification');
         if (!welcomeNotification) return;
 
-        // Show notification with animation
-        setTimeout(() => {
-            welcomeNotification.classList.add('show');
-        }, 1000);
+        // Show notification
+        welcomeNotification.style.display = 'flex';
 
         // Auto-hide after 8 seconds
         setTimeout(() => {
@@ -25,12 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function dismissWelcomeNotification() {
-        const welcomeNotification = document.querySelector('.welcome-notification');
+        const welcomeNotification = document.getElementById('welcome-notification');
         if (!welcomeNotification) return;
 
         // Add slide-out animation
-        welcomeNotification.style.transform = 'translateX(-50%) translateY(-100px)';
-        welcomeNotification.style.opacity = '0';
+        welcomeNotification.style.animation = 'slideUp 0.4s ease-out';
+        setTimeout(() => {
+            welcomeNotification.style.display = 'none';
+        }, 400);
+    }
         
         // Remove notification after animation
         setTimeout(() => {
