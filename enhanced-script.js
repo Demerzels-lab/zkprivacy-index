@@ -96,37 +96,75 @@ document.addEventListener('DOMContentLoaded', function(): void {
 
     // Make dismissWelcomeNotification globally available
     window.dismissWelcomeNotification = dismissWelcomeNotification;
+window.showDocumentationModal = showDocumentationModal;
 
-    // Show main content by default
+// Watch Demo functionality - restoring original demo
+window.showDemo = function() {
+    const modal = document.createElement('div');
+    modal.className = 'launch-modal show';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ZKPrivacy Index Demo</h2>
+                <button class="close-modal" onclick="closeModal(this)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-content">
+                    <div class="demo-section">
+                        <h3>🎯 Real-time Privacy Analytics</h3>
+                        <p>Experience live privacy coin tracking with real-time price updates, market cap analysis, and privacy score calculations.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>🔍 Advanced Filtering</h3>
+                        <p>Filter coins by privacy level, launch status, market cap, and more. Find exactly what you're looking for.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>⚡ Zero-Knowledge Verification</h3>
+                        <p>All data processing happens locally. Your privacy is protected with zero-knowledge proof technology.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>📊 Launch Detection</h3>
+                        <p>Get notified about upcoming privacy coin launches from Twitter, GitHub, and other sources.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showPrivacyRankingModal(); closeModal(this)">Try Live Demo</button>
+                <button class="secondary-btn" onclick="closeModal(this)">Close</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 0);
+    }
+};
+
+    // Show main content by default - seperti kondisi website awal
     const mainContent = document.getElementById('main-content');
     const showAllAssetsBtn = document.getElementById('show-all-assets');
     
-    // Hide main content initially - user must click to explore
+    // Main content tetap terlihat (kondisi website pertama kali dibuat)
     if (mainContent) {
-        mainContent.style.display = 'none';
-        mainContent.style.opacity = '0';
-        mainContent.style.transform = 'translateY(20px)';
+        mainContent.style.display = 'block';
+        mainContent.style.opacity = '1';
+        mainContent.style.transform = 'translateY(0)';
+        
+        // Initialize all features immediately
+        initializeAllFeatures();
     }
     
-    // Handle "Explore Privacy Assets" button click - show main content and scroll
+    // Handle "Explore Privacy Assets" button - Show ranking modal
     if (showAllAssetsBtn) {
         showAllAssetsBtn.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Show privacy assets ranking modal immediately
+            // Show privacy assets ranking modal
             showPrivacyRankingModal();
-            
-            // Also show main content with animation for ongoing exploration
-            if (mainContent) {
-                mainContent.style.display = 'block';
-                mainContent.style.opacity = '1';
-                mainContent.style.transform = 'translateY(0)';
-                
-                // Initialize features when content is shown
-                initializeAllFeatures();
-                
-                // Scroll to main content smoothly
-                setTimeout(() => {
+        });
+    }
                     mainContent.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -1241,6 +1279,51 @@ document.addEventListener('DOMContentLoaded', function(): void {
 
 // Make key functions globally available for onclick handlers
 window.dismissWelcomeNotification = dismissWelcomeNotification;
+window.showDocumentationModal = showDocumentationModal;
+
+// Watch Demo functionality - restoring original demo
+window.showDemo = function() {
+    const modal = document.createElement('div');
+    modal.className = 'launch-modal show';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ZKPrivacy Index Demo</h2>
+                <button class="close-modal" onclick="closeModal(this)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-content">
+                    <div class="demo-section">
+                        <h3>🎯 Real-time Privacy Analytics</h3>
+                        <p>Experience live privacy coin tracking with real-time price updates, market cap analysis, and privacy score calculations.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>🔍 Advanced Filtering</h3>
+                        <p>Filter coins by privacy level, launch status, market cap, and more. Find exactly what you're looking for.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>⚡ Zero-Knowledge Verification</h3>
+                        <p>All data processing happens locally. Your privacy is protected with zero-knowledge proof technology.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>📊 Launch Detection</h3>
+                        <p>Get notified about upcoming privacy coin launches from Twitter, GitHub, and other sources.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showPrivacyRankingModal(); closeModal(this)">Try Live Demo</button>
+                <button class="secondary-btn" onclick="closeModal(this)">Close</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 0);
+    }
+};
 window.closeModal = closeModal;
 window.setupModalCloseHandlers = setupModalCloseHandlers;
 
@@ -1645,6 +1728,51 @@ window.exportRankingData = function() {
 };
 
 window.dismissWelcomeNotification = dismissWelcomeNotification;
+window.showDocumentationModal = showDocumentationModal;
+
+// Watch Demo functionality - restoring original demo
+window.showDemo = function() {
+    const modal = document.createElement('div');
+    modal.className = 'launch-modal show';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ZKPrivacy Index Demo</h2>
+                <button class="close-modal" onclick="closeModal(this)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-content">
+                    <div class="demo-section">
+                        <h3>🎯 Real-time Privacy Analytics</h3>
+                        <p>Experience live privacy coin tracking with real-time price updates, market cap analysis, and privacy score calculations.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>🔍 Advanced Filtering</h3>
+                        <p>Filter coins by privacy level, launch status, market cap, and more. Find exactly what you're looking for.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>⚡ Zero-Knowledge Verification</h3>
+                        <p>All data processing happens locally. Your privacy is protected with zero-knowledge proof technology.</p>
+                    </div>
+                    <div class="demo-section">
+                        <h3>📊 Launch Detection</h3>
+                        <p>Get notified about upcoming privacy coin launches from Twitter, GitHub, and other sources.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showPrivacyRankingModal(); closeModal(this)">Try Live Demo</button>
+                <button class="secondary-btn" onclick="closeModal(this)">Close</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 0);
+    }
+};
 
 // Missing modal functions
 function showCoinDetailsModal(coin) {
