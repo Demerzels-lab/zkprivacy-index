@@ -2217,9 +2217,14 @@ body {
   color: var(--neutral-100);
 }
 
-.notification-content i {
-  color: var(--primary-500);
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-500);
+  border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--primary-500);
+  animation: pulse 2s infinite;
 }
 
 .notification-text {
@@ -2250,26 +2255,36 @@ body {
 
 .close-btn {
   background: none;
-  border: none;
+  border: 1px solid var(--neutral-700);
   color: var(--neutral-400);
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
   transition: all 0.2s ease;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .close-btn:hover {
   color: var(--neutral-200);
   background: var(--neutral-800);
+  border-color: var(--neutral-600);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
 }
 
 .close-btn i {
   width: 16px;
   height: 16px;
+  margin-left: 4px;
 }
 
 @keyframes slideDown {
@@ -2280,6 +2295,18 @@ body {
   to {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 2px var(--primary-500);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(var(--primary-500-rgb, 59, 130, 246), 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 2px var(--primary-500);
   }
 }
 
