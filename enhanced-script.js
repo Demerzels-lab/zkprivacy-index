@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function(): void {
 
     // Show welcome notification on every page load
     showWelcomeNotification();
+    
+    // Show launch notifications early (after welcome)
+    setTimeout(showLaunchNotifications, 1000);
 
     // Welcome Notification Functions
     function showWelcomeNotification() {
@@ -106,7 +109,10 @@ document.addEventListener('DOMContentLoaded', function(): void {
         showAllAssetsBtn.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Show main content with animation
+            // Show privacy assets ranking modal immediately
+            showPrivacyRankingModal();
+            
+            // Also show main content with animation for ongoing exploration
             if (mainContent) {
                 mainContent.style.display = 'block';
                 mainContent.style.opacity = '1';
@@ -921,11 +927,11 @@ document.addEventListener('DOMContentLoaded', function(): void {
         // Setup real-time updates (every 30 seconds)
         setInterval(fetchRealTimePrices, 30000);
         
-        // Setup launch detection (every 5 minutes)
-        setInterval(detectNewLaunches, 300000);
+        // Setup launch detection (every 3 minutes)
+        setInterval(detectNewLaunches, 180000);
         
-        // Initial launch detection
-        setTimeout(detectNewLaunches, 5000);
+        // Initial launch detection - faster timing
+        setTimeout(detectNewLaunches, 2000);
         
         // Populate grid with real data
         populatePrivacyGrid();
