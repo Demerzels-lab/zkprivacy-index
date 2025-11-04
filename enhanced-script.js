@@ -1,5 +1,26 @@
 // ZKPrivacy Index - Enhanced Real-time Data & Launch Detection
-document.addEventListener('DOMContentLoaded', function() {
+
+// TypeScript Interfaces
+interface PrivacyCoin {
+    name: string;
+    ticker: string;
+    logo: string;
+    privacyScore: number;
+    features: string[];
+    launchDate: string;
+    verified: boolean;
+    category: string;
+}
+
+interface LaunchNotification {
+    coin: PrivacyCoin;
+    timestamp: Date;
+}
+
+// Global types
+type Element = HTMLElement | null;
+
+document.addEventListener('DOMContentLoaded', function(): void {
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -527,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Show launch notifications
-    function showLaunchNotifications() {
+    function showLaunchNotifications(): void {
         const upcomingCoins = upcomingPrivacyCoins.filter(coin => coin.status !== 'launched_recently');
         
         if (upcomingCoins.length > 0) {
@@ -555,21 +576,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 notification.classList.add('show');
             }, 2000);
             
-            // Add click handler for notification
+            // Add click handler for View Launches button
             const viewLaunchesBtn = notification.querySelector('.view-launches-btn');
             if (viewLaunchesBtn) {
-                viewLaunchesBtn.addEventListener('click', function() {
+                viewLaunchesBtn.addEventListener('click', (event: Event): void => {
+                    // Hide notification with animation
                     notification.classList.remove('show');
-                    setTimeout(() => notification.remove(), 300);
-                    showLaunchModal(upcomingCoins);
+                    
+                    // Open launch modal after notification animation
+                    setTimeout(() => {
+                        notification.remove();
+                        showLaunchModal(upcomingCoins);
+                    }, 300);
                 });
             }
-            
-            // Handle click
-            notification.querySelector('.view-launches-btn')?.addEventListener('click', () => {
-                showLaunchModal(upcomingCoins);
-                notification.remove();
-            });
             
             // Auto-remove after 10 seconds
             setTimeout(() => {
@@ -580,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Show launch detection modal
-    function showLaunchModal(upcomingCoins) {
+    function showLaunchModal(upcomingCoins: PrivacyCoin[]): void {
         const modal = document.createElement('div');
         modal.className = 'launch-modal';
         modal.innerHTML = `
