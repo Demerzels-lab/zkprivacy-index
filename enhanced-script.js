@@ -1583,6 +1583,7 @@ function setupRankingFilters(modal) {
 
 // Global functions for ranking modal
 window.showPrivacyRankingModal = showPrivacyRankingModal;
+
 window.viewCoinDetails = function(ticker) {
     const coin = privacyCoins.find(c => c.ticker === ticker);
     if (coin) {
@@ -1591,20 +1592,202 @@ window.viewCoinDetails = function(ticker) {
 };
 
 window.addToComparison = function(ticker) {
-    console.log('Adding to comparison:', ticker);
     // Implementation for comparison feature
+    const selectedCoins = JSON.parse(localStorage.getItem('comparisonCoins') || '[]');
+    if (!selectedCoins.includes(ticker)) {
+        selectedCoins.push(ticker);
+        localStorage.setItem('comparisonCoins', JSON.stringify(selectedCoins));
+        
+        // Show feedback
+        const notification = document.createElement('div');
+        notification.className = 'launch-notification show';
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i data-lucide="check"></i>
+                <span>${ticker} added to comparison!</span>
+            </div>
+        `;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 2000);
+    }
 };
 
 window.showAssetComparison = function() {
-    console.log('Showing asset comparison');
-    // Implementation for comparison feature
+    const selectedCoins = JSON.parse(localStorage.getItem('comparisonCoins') || '[]');
+    if (selectedCoins.length === 0) {
+        alert('No coins selected for comparison');
+        return;
+    }
+    
+    const coins = selectedCoins.map(ticker => privacyCoins.find(c => c.ticker === ticker)).filter(Boolean);
+    showComparisonModal(coins);
 };
 
 window.exportRankingData = function() {
-    console.log('Exporting ranking data');
-    // Implementation for data export
+    // Export data as CSV
+    const csvData = privacyCoins.map(coin => ({
+        Rank: privacyCoins.indexOf(coin) + 1,
+        Name: coin.name,
+        Ticker: coin.ticker,
+        'Privacy Score': coin.score,
+        'Launch Status': coin.launchStatus,
+        'Current Price': priceData[coin.ticker]?.price || 'N/A',
+        '24h Change': priceData[coin.ticker]?.change || 'N/A',
+        'Market Cap': priceData[coin.ticker]?.marketCap || 'N/A'
+    }));
+    
+    const csv = convertToCSV(csvData);
+    downloadCSV(csv, 'privacy_coins_ranking.csv');
 };
+
 window.dismissWelcomeNotification = dismissWelcomeNotification;
-window.showCoinDetails = showCoinDetails;
-window.closeCoinModal = closeCoinModal;
+
+// Missing modal functions
+function showCoinDetailsModal(coin) {
+    const modal = document.createElement('div');
+    modal.className = 'launch-modal show';
+    
+    const priceInfo = priceData[coin.ticker] || { price: 'Loading...', change: '--', marketCap: '--' };
+    const isPositiveChange = parseFloat(priceInfo.change) >= 0;
+    
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>${coin.name} (${coin.ticker})</h2>
+                <button class="close-modal" onclick="closeModal(this)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="coin-details-grid">
+                    <div class="detail-section">
+                        <h3>Privacy Metrics</h3>
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <span class="metric-label">Privacy Score</span>
+                                <span class="metric-value">${coin.score}/10</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Status</span>
+                                <span class="metric-value">${coin.launchStatus === 'active' ? 'Active' : coin.launchStatus === 'launching_soon' ? 'Launching Soon' : 'Pre-Launch'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Market Data</h3>
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <span class="metric-label">Current Price</span>
+                                <span class="metric-value">${priceInfo.price}</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">24h Change</span>
+                                <span class="metric-value ${isPositiveChange ? 'positive' : 'negative'}">${priceInfo.change}</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Market Cap</span>
+                                <span class="metric-value">${priceInfo.marketCap}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Privacy Features</h3>
+                        <div class="features-list">
+                            ${coin.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="addToComparison('${coin.ticker}')">Add to Comparison</button>
+                <button class="secondary-btn" onclick="closeModal(this)">Close</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Initialize icons
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 0);
+    }
+}
+
+function showComparisonModal(coins) {
+    const modal = document.createElement('div');
+    modal.className = 'launch-modal show';
+    
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Asset Comparison</h2>
+                <button class="close-modal" onclick="closeModal(this)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="comparison-cell">Metric</div>
+                        ${coins.map(coin => `<div class="comparison-cell">${coin.name} (${coin.ticker})</div>`).join('')}
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Privacy Score</div>
+                        ${coins.map(coin => `<div class="comparison-cell">${coin.score}/10</div>`).join('')}
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Current Price</div>
+                        ${coins.map(coin => `<div class="comparison-cell">${priceData[coin.ticker]?.price || 'N/A'}</div>`).join('')}
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">24h Change</div>
+                        ${coins.map(coin => {
+                            const change = priceData[coin.ticker]?.change || '--';
+                            const isPositive = parseFloat(change) >= 0;
+                            return `<div class="comparison-cell ${isPositive ? 'positive' : 'negative'}">${change}</div>`;
+                        }).join('')}
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Market Cap</div>
+                        ${coins.map(coin => `<div class="comparison-cell">${priceData[coin.ticker]?.marketCap || 'N/A'}</div>`).join('')}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" onclick="closeModal(this)">Close</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+}
+
+function closeModal(button) {
+    const modal = button.closest('.launch-modal, .ranking-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+    }
+}
+
+function convertToCSV(data) {
+    const headers = Object.keys(data[0]);
+    const csvContent = [
+        headers.join(','),
+        ...data.map(row => headers.map(header => `"${row[header]}"`).join(','))
+    ].join('\n');
+    return csvContent;
+}
+
+function downloadCSV(csvContent, filename) {
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
 window.closeModal = closeModal;
