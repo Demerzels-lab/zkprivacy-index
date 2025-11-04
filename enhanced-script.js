@@ -546,8 +546,8 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.innerHTML = `
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>🚀 Upcoming Privacy Coin Launches</h2>
-                    <button class="close-modal" data-lucide="x"></button>
+                    <h2>Upcoming Privacy Coin Launches</h2>
+                    <button class="close-modal close-btn-large" data-lucide="x"></button>
                 </div>
                 <div class="modal-body">
                     ${upcomingCoins.map(coin => `
@@ -581,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `).join('')}
                 </div>
                 <div class="modal-footer">
-                    <button class="enable-notifications">🔔 Enable Launch Alerts</button>
+                    <button class="enable-notifications">Enable Launch Alerts</button>
                 </div>
             </div>
         `;
@@ -765,9 +765,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 
                 <div class="modal-footer">
-                    <button class="add-watchlist">📊 Add to Watchlist</button>
-                    <button class="set-alert">🔔 Set Price Alert</button>
-                    <button class="share-analysis">📤 Share Analysis</button>
+                    <button class="add-watchlist">Add to Watchlist</button>
+                    <button class="set-alert">Set Price Alert</button>
+                    <button class="share-analysis">Share Analysis</button>
                 </div>
             </div>
         `;
