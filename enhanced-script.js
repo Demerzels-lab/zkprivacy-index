@@ -803,12 +803,12 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.innerHTML = `
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>📚 Documentation</h2>
+                    <h2>Documentation</h2>
                     <button class="close-modal" data-lucide="x"></button>
                 </div>
                 <div class="modal-body">
                     <div class="docs-section">
-                        <h3>🚀 Getting Started</h3>
+                        <h3>Getting Started</h3>
                         <p>Learn how to use ZKPrivacy Index effectively with our comprehensive guide.</p>
                         <div class="doc-links">
                             <a href="#getting-started" class="doc-link">Quick Start Guide</a>
@@ -818,7 +818,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <div class="docs-section">
-                        <h3>🔒 Privacy Features</h3>
+                        <h3>Privacy Features</h3>
                         <p>Understanding our privacy-first approach and zero-knowledge verification.</p>
                         <div class="doc-links">
                             <a href="#zero-tracking" class="doc-link">Zero Tracking Guarantee</a>
@@ -828,7 +828,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <div class="docs-section">
-                        <h3>📊 Analytics Guide</h3>
+                        <h3>Analytics Guide</h3>
                         <p>How to interpret privacy scores, market data, and community ratings.</p>
                         <div class="doc-links">
                             <a href="#scoring-system" class="doc-link">Privacy Scoring System</a>
