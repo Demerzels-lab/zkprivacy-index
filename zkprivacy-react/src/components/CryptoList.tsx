@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ExternalLink, Github, MessageCircle, Book, X, Star, TrendingUp, Shield } from 'lucide-react';
+import { Search, ExternalLink, Github, MessageCircle, Book, X, TrendingUp, Shield } from 'lucide-react';
 import { CryptoCurrency } from '../types';
 
 const CryptoList: React.FC = () => {
