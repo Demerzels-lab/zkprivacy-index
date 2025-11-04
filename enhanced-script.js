@@ -83,14 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeAllFeatures();
     }
     
-    // Handle "Explore Privacy Assets" button click for smooth scroll
+    // Handle "Explore Privacy Assets" button click - show ranking modal
     if (showAllAssetsBtn) {
-        showAllAssetsBtn.addEventListener('click', function() {
-            // Scroll to privacy scores section smoothly
-            const privacySection = document.querySelector('.privacy-scores');
-            if (privacySection) {
-                privacySection.scrollIntoView({ behavior: 'smooth' });
-            }
+        showAllAssetsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Show privacy asset ranking modal
+            showPrivacyRankingModal();
         });
     }
 
@@ -556,6 +554,16 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 notification.classList.add('show');
             }, 2000);
+            
+            // Add click handler for notification
+            const viewLaunchesBtn = notification.querySelector('.view-launches-btn');
+            if (viewLaunchesBtn) {
+                viewLaunchesBtn.addEventListener('click', function() {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                    showLaunchModal(upcomingCoins);
+                });
+            }
             
             // Handle click
             notification.querySelector('.view-launches-btn')?.addEventListener('click', () => {
@@ -1344,6 +1352,165 @@ function showAnalyticsGuideModal() {
 window.showGettingStartedModal = showGettingStartedModal;
 window.showPrivacyFeaturesModal = showPrivacyFeaturesModal;
 window.showAnalyticsGuideModal = showAnalyticsGuideModal;
+
+// Privacy Ranking Modal
+function showPrivacyRankingModal() {
+    const modal = document.createElement('div');
+    modal.className = 'ranking-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Asset Rankings</h2>
+                <button class="close-modal" data-lucide="x"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ranking-toolbar">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Assets</button>
+                        <button class="filter-btn" data-filter="high">High Privacy (8+)</button>
+                        <button class="filter-btn" data-filter="medium">Medium Privacy (6-7.9)</button>
+                        <button class="filter-btn" data-filter="new">New Launches</button>
+                    </div>
+                </div>
+                <div class="ranking-list" id="ranking-list">
+                    <!-- Will be populated with privacy coins data -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="showAssetComparison()">Compare Selected</button>
+                <button class="secondary-btn" onclick="exportRankingData()">Export Data</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Initialize icons
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 0);
+    }
+    
+    // Populate ranking data
+    populateRankingData(modal);
+    
+    // Setup filter functionality
+    setupRankingFilters(modal);
+    
+    // Show modal
+    setTimeout(() => modal.classList.add('show'), 100);
+    
+    // Setup close handlers
+    setupModalCloseHandlers(modal);
+}
+
+function populateRankingData(modal) {
+    const rankingList = modal.querySelector('#ranking-list');
+    const coins = [...privacyCoins].sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+    
+    rankingList.innerHTML = coins.map((coin, index) => `
+        <div class="ranking-item" data-score="${coin.score}">
+            <div class="ranking-position">
+                <span class="position-number">#${index + 1}</span>
+            </div>
+            <div class="ranking-info">
+                <div class="coin-avatar">${coin.logo}</div>
+                <div class="coin-details">
+                    <h3>${coin.name}</h3>
+                    <p class="coin-category">${coin.category}</p>
+                </div>
+            </div>
+            <div class="ranking-metrics">
+                <div class="privacy-score">
+                    <span class="score-value">${coin.score}</span>
+                    <span class="score-max">/10</span>
+                </div>
+                <div class="coin-status ${coin.status}">
+                    <i data-lucide="${coin.status === 'active' ? 'check-circle' : 'clock'}"></i>
+                    <span>${coin.status}</span>
+                </div>
+            </div>
+            <div class="ranking-actions">
+                <button class="action-btn" onclick="viewCoinDetails('${coin.ticker}')">
+                    <i data-lucide="eye"></i>
+                </button>
+                <button class="action-btn" onclick="addToComparison('${coin.ticker}')">
+                    <i data-lucide="plus"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+    
+    // Initialize icons
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 0);
+    }
+}
+
+function setupRankingFilters(modal) {
+    const filterBtns = modal.querySelectorAll('.filter-btn');
+    const rankingItems = modal.querySelectorAll('.ranking-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            
+            rankingItems.forEach(item => {
+                const score = parseFloat(item.dataset.score);
+                let shouldShow = false;
+                
+                switch(filter) {
+                    case 'all':
+                        shouldShow = true;
+                        break;
+                    case 'high':
+                        shouldShow = score >= 8;
+                        break;
+                    case 'medium':
+                        shouldShow = score >= 6 && score < 8;
+                        break;
+                    case 'new':
+                        shouldShow = item.querySelector('.coin-status').textContent.trim() === 'new';
+                        break;
+                }
+                
+                if (shouldShow) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Global functions for ranking modal
+window.showPrivacyRankingModal = showPrivacyRankingModal;
+window.viewCoinDetails = function(ticker) {
+    const coin = privacyCoins.find(c => c.ticker === ticker);
+    if (coin) {
+        showCoinDetailsModal(coin);
+    }
+};
+
+window.addToComparison = function(ticker) {
+    console.log('Adding to comparison:', ticker);
+    // Implementation for comparison feature
+};
+
+window.showAssetComparison = function() {
+    console.log('Showing asset comparison');
+    // Implementation for comparison feature
+};
+
+window.exportRankingData = function() {
+    console.log('Exporting ranking data');
+    // Implementation for data export
+};
 window.dismissWelcomeNotification = dismissWelcomeNotification;
 window.showCoinDetails = showCoinDetails;
 window.closeCoinModal = closeCoinModal;
