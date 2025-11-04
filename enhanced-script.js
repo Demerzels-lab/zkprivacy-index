@@ -533,6 +533,38 @@ document.addEventListener('DOMContentLoaded', function(): void {
                 if (marketCapElement) marketCapElement.textContent = priceData[ticker].marketCap;
             }
         });
+        
+        // Also update ranking modal if it's open
+        updateRankingModalPrices();
+    }
+    
+    // Update ranking modal with real-time price data
+    function updateRankingModalPrices() {
+        const rankingModal = document.querySelector('.ranking-modal');
+        if (!rankingModal) return;
+        
+        const rankingItems = rankingModal.querySelectorAll('.ranking-item');
+        rankingItems.forEach(item => {
+            const tickerElement = item.querySelector('.coin-ticker');
+            if (tickerElement) {
+                const ticker = tickerElement.textContent;
+                if (ticker && priceData[ticker]) {
+                    const priceInfo = priceData[ticker];
+                    const currentPriceElement = item.querySelector('.current-price');
+                    const priceChangeElement = item.querySelector('.price-change');
+                    const marketCapElement = item.querySelector('.market-cap small');
+                    const lastUpdateElement = item.querySelector('.last-update small');
+                    
+                    if (currentPriceElement) currentPriceElement.textContent = priceInfo.price;
+                    if (priceChangeElement) {
+                        priceChangeElement.textContent = priceInfo.change;
+                        priceChangeElement.className = `price-change ${parseFloat(priceInfo.change) >= 0 ? 'positive' : 'negative'}`;
+                    }
+                    if (marketCapElement) marketCapElement.textContent = `Market Cap: ${priceInfo.marketCap}`;
+                    if (lastUpdateElement) lastUpdateElement.textContent = `Updated: ${priceInfo.lastUpdate}`;
+                }
+            }
+        });
     }
 
     // Detect new privacy coin launches
@@ -1450,7 +1482,11 @@ function populateRankingData(modal) {
     const rankingList = modal.querySelector('#ranking-list');
     const coins = [...privacyCoins].sort((a, b) => b.score - a.score);
     
-    rankingList.innerHTML = coins.map((coin, index) => `
+    rankingList.innerHTML = coins.map((coin, index) => {
+        const priceInfo = priceData[coin.ticker] || { price: 'Loading...', change: '--', marketCap: '--', lastUpdate: '--' };
+        const isPositiveChange = parseFloat(priceInfo.change) >= 0;
+        
+        return `
         <div class="ranking-item" data-score="${coin.score}">
             <div class="ranking-position">
                 <span class="position-number">#${index + 1}</span>
@@ -1460,6 +1496,7 @@ function populateRankingData(modal) {
                 <div class="coin-details">
                     <h3>${coin.name}</h3>
                     <p class="coin-category">${coin.launchStatus === 'pre_launch' ? 'Pre-Launch' : coin.launchStatus === 'launching_soon' ? 'Launching Soon' : 'Active'}</p>
+                    <p class="coin-ticker">${coin.ticker}</p>
                 </div>
             </div>
             <div class="ranking-metrics">
@@ -1472,6 +1509,18 @@ function populateRankingData(modal) {
                     <span>${coin.launchStatus === 'active' ? 'Active' : coin.launchStatus === 'launching_soon' ? 'Launching Soon' : 'Pre-Launch'}</span>
                 </div>
             </div>
+            <div class="ranking-price-data">
+                <div class="price-info">
+                    <span class="current-price">${priceInfo.price}</span>
+                    <span class="price-change ${isPositiveChange ? 'positive' : 'negative'}">${priceInfo.change}</span>
+                </div>
+                <div class="market-cap">
+                    <small>Market Cap: ${priceInfo.marketCap}</small>
+                </div>
+                <div class="last-update">
+                    <small>Updated: ${priceInfo.lastUpdate}</small>
+                </div>
+            </div>
             <div class="ranking-actions">
                 <button class="action-btn" onclick="viewCoinDetails('${coin.ticker}')">
                     <i data-lucide="eye"></i>
@@ -1481,7 +1530,8 @@ function populateRankingData(modal) {
                 </button>
             </div>
         </div>
-    `).join('');
+        `;
+    }).join('');
     
     // Initialize icons
     if (typeof lucide !== 'undefined') {
