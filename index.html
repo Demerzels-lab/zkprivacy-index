@@ -1103,6 +1103,10 @@
         .benefit-icon {
             font-size: 2rem;
             margin-bottom: 0.5rem;
+            width: 2rem;
+            height: 2rem;
+            color: var(--accent-primary);
+            stroke-width: 2;
         }
 
         .tech-breakdown {
@@ -1601,7 +1605,7 @@
             </div>
             <div class="hero-actions">
                 <button class="btn-primary" onclick="document.getElementById('coins').scrollIntoView({behavior: 'smooth'})">
-                    <i data-lucide="bar-chart"></i>
+                    <i data-lucide="bar-chart-3"></i>
                     Launch Analytics
                 </button>
                 <button class="btn-secondary" onclick="document.getElementById('zk-technology').scrollIntoView({behavior: 'smooth'})">
@@ -1641,7 +1645,7 @@
             <!-- Launch Detection Panel -->
             <div class="launch-panel" id="launches">
                 <div class="launch-header">
-                    <h3 class="launch-title">🔍 Launch Detection</h3>
+                    <h3 class="launch-title">Launch Detection System</h3>
                     <div class="live-indicator">
                         <div class="dot"></div>
                         <span>Monitoring</span>
@@ -1663,7 +1667,7 @@
     <section class="zk-guide" id="zk-technology">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">🔐 Zero-Knowledge Technology Guide</h2>
+                <h2 class="section-title">Zero-Knowledge Technology Guide</h2>
                 <p class="section-subtitle">
                     Understand the privacy technologies powering next-generation cryptocurrencies
                 </p>
@@ -1676,15 +1680,15 @@
                     <p>Zero-knowledge proofs allow you to prove that you know something without revealing what it is. In crypto, this means proving a transaction is valid without exposing transaction details.</p>
                     <div class="zk-benefits">
                         <div class="benefit">
-                            <span class="benefit-icon">🔒</span>
+                            <span class="benefit-icon"><i data-lucide="lock"></i></span>
                             <span>Complete Privacy</span>
                         </div>
                         <div class="benefit">
-                            <span class="benefit-icon">⚡</span>
+                            <span class="benefit-icon"><i data-lucide="zap"></i></span>
                             <span>Fast Verification</span>
                         </div>
                         <div class="benefit">
-                            <span class="benefit-icon">✅</span>
+                            <span class="benefit-icon"><i data-lucide="shield-check"></i></span>
                             <span>Trustless Security</span>
                         </div>
                     </div>
@@ -1695,7 +1699,7 @@
             <div class="tech-breakdown">
                 <div class="tech-card" data-tech="zk-snarks">
                     <div class="tech-header">
-                        <div class="tech-icon">🧬</div>
+                        <div class="tech-icon"><i data-lucide="dna"></i></div>
                         <div class="tech-info">
                             <h3>zk-SNARKs</h3>
                             <p class="tech-subtitle">Zero-Knowledge Succinct Non-Interactive Argument of Knowledge</p>
@@ -1705,10 +1709,10 @@
                     <div class="tech-content">
                         <p><strong>How it works:</strong> Creates cryptographic proofs that verify transactions without revealing transaction details or sender/receiver information.</p>
                         <div class="tech-features">
-                            <div class="feature">✅ Constant-size proofs</div>
-                            <div class="feature">⚡ Fast verification</div>
-                            <div class="feature">🔒 Strong privacy</div>
-                            <div class="feature">⚙️ Trusted setup required</div>
+                            <div class="feature"><i data-lucide="check"></i> Constant-size proofs</div>
+                            <div class="feature"><i data-lucide="zap"></i> Fast verification</div>
+                            <div class="feature"><i data-lucide="lock"></i> Strong privacy</div>
+                            <div class="feature"><i data-lucide="settings"></i> Trusted setup required</div>
                         </div>
                         <p class="tech-use"><strong>Used by:</strong> Zcash, Findora, some Ethereum privacy solutions</p>
                     </div>
@@ -1716,7 +1720,7 @@
 
                 <div class="tech-card" data-tech="ring-signatures">
                     <div class="tech-header">
-                        <div class="tech-icon">👥</div>
+                        <div class="tech-icon"><i data-lucide="users"></i></div>
                         <div class="tech-info">
                             <h3>Ring Signatures</h3>
                             <p class="tech-subtitle">Cryptographic digital signature scheme</p>
@@ -1726,10 +1730,10 @@
                     <div class="tech-content">
                         <p><strong>How it works:</strong> Mixes your transaction with a group of other transactions, making it impossible to determine which group member actually sent it.</p>
                         <div class="tech-features">
-                            <div class="feature">🔒 Sender anonymity</div>
-                            <div class="feature">⚡ No trusted setup</div>
-                            <div class="feature">🛡️ Quantum resistant</div>
-                            <div class="feature">💪 Battle-tested</div>
+                            <div class="feature"><i data-lucide="user-check"></i> Sender anonymity</div>
+                            <div class="feature"><i data-lucide="zap"></i> No trusted setup</div>
+                            <div class="feature"><i data-lucide="shield"></i> Quantum resistant</div>
+                            <div class="feature"><i data-lucide="award"></i> Battle-tested</div>
                         </div>
                         <p class="tech-use"><strong>Used by:</strong> Monero, several privacy coins</p>
                     </div>
@@ -1737,7 +1741,7 @@
 
                 <div class="tech-card" data-tech="mimblewimble">
                     <div class="tech-header">
-                        <div class="tech-icon">🎭</div>
+                        <div class="tech-icon"><i data-lucide="shapes"></i></div>
                         <div class="tech-info">
                             <h3>Mimblewimble</h3>
                             <p class="tech-subtitle">Privacy-preserving blockchain protocol</p>
@@ -1747,10 +1751,10 @@
                     <div class="tech-content">
                         <p><strong>How it works:</strong> Combines transactions in a way that hides all transaction amounts and links while maintaining blockchain validity through cryptographic commitments.</p>
                         <div class="tech-features">
-                            <div class="feature">💰 Amount privacy</div>
-                            <div class="feature">🔗 Transaction linking hidden</div>
-                            <div class="feature">📊 Scalable design</div>
-                            <div class="feature">⚙️ No addresses needed</div>
+                            <div class="feature"><i data-lucide="dollar-sign"></i> Amount privacy</div>
+                            <div class="feature"><i data-lucide="link"></i> Transaction linking hidden</div>
+                            <div class="feature"><i data-lucide="bar-chart-3"></i> Scalable design</div>
+                            <div class="feature"><i data-lucide="at-sign"></i> No addresses needed</div>
                         </div>
                         <p class="tech-use"><strong>Used by:</strong> Beam, Grin, some Bitcoin privacy implementations</p>
                     </div>
@@ -1758,7 +1762,7 @@
 
                 <div class="tech-card" data-tech="zk-starks">
                     <div class="tech-header">
-                        <div class="tech-icon">⚡</div>
+                        <div class="tech-icon"><i data-lucide="cpu"></i></div>
                         <div class="tech-info">
                             <h3>zk-STARKs</h3>
                             <p class="tech-subtitle">Zero-Knowledge Scalable Transparent Argument of Knowledge</p>
@@ -1768,10 +1772,10 @@
                     <div class="tech-content">
                         <p><strong>How it works:</strong> Similar to SNARKs but without trusted setup, using collision-resistant hash functions instead of elliptic curve pairings.</p>
                         <div class="tech-features">
-                            <div class="feature">🔓 No trusted setup</div>
-                            <div class="feature">🛡️ Quantum secure</div>
-                            <div class="feature">📈 Highly scalable</div>
-                            <div class="feature">✅ Transparent verification</div>
+                            <div class="feature"><i data-lucide="unlock"></i> No trusted setup</div>
+                            <div class="feature"><i data-lucide="shield"></i> Quantum secure</div>
+                            <div class="feature"><i data-lucide="trending-up"></i> Highly scalable</div>
+                            <div class="feature"><i data-lucide="eye"></i> Transparent verification</div>
                         </div>
                         <p class="tech-use"><strong>Used by:</strong> StarkNet, some emerging privacy protocols</p>
                     </div>
@@ -1779,7 +1783,7 @@
 
                 <div class="tech-card" data-tech="coinjoin">
                     <div class="tech-header">
-                        <div class="tech-icon">🤝</div>
+                        <div class="tech-icon"><i data-lucide="git-merge"></i></div>
                         <div class="tech-info">
                             <h3>CoinJoin</h3>
                             <p class="tech-subtitle">Transaction mixing protocol</p>
@@ -1789,10 +1793,10 @@
                     <div class="tech-content">
                         <p><strong>How it works:</strong> Combines multiple transactions from different users into one large transaction, making it difficult to trace individual transactions.</p>
                         <div class="tech-features">
-                            <div class="feature">👥 Collaborative mixing</div>
-                            <div class="feature">🔄 Voluntary participation</div>
-                            <div class="feature">💸 Simple concept</div>
-                            <div class="feature">⚠️ Timing analysis possible</div>
+                            <div class="feature"><i data-lucide="users"></i> Collaborative mixing</div>
+                            <div class="feature"><i data-lucide="refresh-cw"></i> Voluntary participation</div>
+                            <div class="feature"><i data-lucide="lightbulb"></i> Simple concept</div>
+                            <div class="feature"><i data-lucide="alert-triangle"></i> Timing analysis possible</div>
                         </div>
                         <p class="tech-use"><strong>Used by:</strong> JoinMarket, Wasabi Wallet, some Bitcoin privacy tools</p>
                     </div>
@@ -1800,7 +1804,7 @@
 
                 <div class="tech-card" data-tech="tornado-cash">
                     <div class="tech-header">
-                        <div class="tech-icon">🌪️</div>
+                        <div class="tech-icon"><i data-lucide="tornado"></i></div>
                         <div class="tech-info">
                             <h3>Tornado Cash</h3>
                             <p class="tech-subtitle">zk-SNARK based mixer</p>
@@ -1810,10 +1814,10 @@
                     <div class="tech-content">
                         <p><strong>How it works:</strong> Uses zk-SNARKs to break the on-chain link between deposit and withdrawal addresses without requiring trusted parties.</p>
                         <div class="tech-features">
-                            <div class="feature">🔒 Strong privacy guarantees</div>
-                            <div class="feature">⚡ Fast withdrawals</div>
-                            <div class="feature">🛠️ Smart contract based</div>
-                            <div class="feature">⚠️ Regulatory concerns</div>
+                            <div class="feature"><i data-lucide="shield"></i> Strong privacy guarantees</div>
+                            <div class="feature"><i data-lucide="zap"></i> Fast withdrawals</div>
+                            <div class="feature"><i data-lucide="wrench"></i> Smart contract based</div>
+                            <div class="feature"><i data-lucide="alert-triangle"></i> Regulatory concerns</div>
                         </div>
                         <p class="tech-use"><strong>Used by:</strong> Ethereum privacy layer, DeFi protocols</p>
                     </div>
@@ -1822,7 +1826,7 @@
 
             <!-- Technology Comparison -->
             <div class="tech-comparison">
-                <h3>🔍 Technology Comparison Matrix</h3>
+                <h3>Technology Comparison Matrix</h3>
                 <div class="comparison-table">
                     <div class="table-header">
                         <div class="tech-col">Technology</div>
@@ -1834,30 +1838,30 @@
                     <div class="table-row">
                         <div class="tech-col">Ring Signatures</div>
                         <div class="score-col">9.2/10</div>
-                        <div class="speed-col">⚡⚡⚡</div>
+                        <div class="speed-col"><i data-lucide="zap"></i><i data-lucide="zap"></i><i data-lucide="zap"></i></div>
                         <div class="setup-col">None</div>
-                        <div class="quantum-col">✅</div>
+                        <div class="quantum-col"><i data-lucide="check"></i></div>
                     </div>
                     <div class="table-row">
                         <div class="tech-col">zk-SNARKs</div>
                         <div class="score-col">9.0/10</div>
-                        <div class="speed-col">⚡⚡⚡⚡</div>
+                        <div class="speed-col"><i data-lucide="zap"></i><i data-lucide="zap"></i><i data-lucide="zap"></i><i data-lucide="zap"></i></div>
                         <div class="setup-col">Trusted</div>
-                        <div class="quantum-col">❌</div>
+                        <div class="quantum-col"><i data-lucide="x"></i></div>
                     </div>
                     <div class="table-row">
                         <div class="tech-col">Mimblewimble</div>
                         <div class="score-col">8.5/10</div>
-                        <div class="speed-col">⚡⚡⚡</div>
+                        <div class="speed-col"><i data-lucide="zap"></i><i data-lucide="zap"></i><i data-lucide="zap"></i></div>
                         <div class="setup-col">None</div>
-                        <div class="quantum-col">⚠️</div>
+                        <div class="quantum-col"><i data-lucide="alert-circle"></i></div>
                     </div>
                     <div class="table-row">
                         <div class="tech-col">zk-STARKs</div>
                         <div class="score-col">8.8/10</div>
-                        <div class="speed-col">⚡⚡⚡</div>
+                        <div class="speed-col"><i data-lucide="zap"></i><i data-lucide="zap"></i><i data-lucide="zap"></i></div>
                         <div class="setup-col">Transparent</div>
-                        <div class="quantum-col">✅</div>
+                        <div class="quantum-col"><i data-lucide="check"></i></div>
                     </div>
                 </div>
             </div>
@@ -1867,7 +1871,7 @@
                 <h3>📋 How to Evaluate Privacy Coins</h3>
                 <div class="guide-grid">
                     <div class="guide-item">
-                        <div class="guide-icon">🔬</div>
+                        <div class="guide-icon"><i data-lucide="microscope"></i></div>
                         <h4>Technical Analysis</h4>
                         <ul>
                             <li>Check the specific privacy technology used</li>
@@ -1877,7 +1881,7 @@
                         </ul>
                     </div>
                     <div class="guide-item">
-                        <div class="guide-icon">🌐</div>
+                        <div class="guide-icon"><i data-lucide="globe"></i></div>
                         <h4>Network Health</h4>
                         <ul>
                             <li>Active development and community</li>
@@ -1887,7 +1891,7 @@
                         </ul>
                     </div>
                     <div class="guide-item">
-                        <div class="guide-icon">⚖️</div>
+                        <div class="guide-icon"><i data-lucide="scale"></i></div>
                         <h4>Regulatory Status</h4>
                         <ul>
                             <li>Legal status in major jurisdictions</li>
@@ -1897,7 +1901,7 @@
                         </ul>
                     </div>
                     <div class="guide-item">
-                        <div class="guide-icon">🚀</div>
+                        <div class="guide-icon"><i data-lucide="rocket"></i></div>
                         <h4>Future Potential</h4>
                         <ul>
                             <li>Roadmap and upcoming features</li>
@@ -1922,21 +1926,21 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
+                    <div class="feature-icon"><i data-lucide="trending-up"></i></div>
                     <h3 class="feature-title">CoinGecko API</h3>
                     <p class="feature-description">
                         Real-time price data, market cap, volume, dan price changes untuk semua privacy coins
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🐦</div>
+                    <div class="feature-icon"><i data-lucide="message-circle"></i></div>
                     <h3 class="feature-title">Twitter Monitoring</h3>
                     <p class="feature-description">
                         Automated detection of privacy coin announcements dan launch notifications
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon"><i data-lucide="github"></i></div>
                     <h3 class="feature-title">GitHub Activity</h3>
                     <p class="feature-description">
                         Track development progress dari privacy coin projects di GitHub
@@ -2191,7 +2195,7 @@
                 ];
                 
                 const randomAnnouncement = mockAnnouncements[Math.floor(Math.random() * mockAnnouncements.length)];
-                showNotification("🚀 New Privacy Coin Alert", randomAnnouncement);
+                showNotification("New Privacy Coin Alert", randomAnnouncement);
             }
         }
 
@@ -2303,20 +2307,20 @@
                     </div>
 
                     <div class="coin-zk-info">
-                        <div class="zk-tech-name">🔐 ${coin.zkDetails.type}</div>
+                        <div class="zk-tech-name"><i data-lucide="shield"></i> ${coin.zkDetails.type}</div>
                         <div class="zk-tech-desc">
                             ${coin.zkDetails.privacyLevel}
-                            ${coin.zkDetails.quantumSafe === true ? ' • 🛡️ Quantum Safe' : coin.zkDetails.quantumSafe === false ? ' • ⚠️ Not Quantum Safe' : ' • ⚠️ Quantum Resistance: TBD'}
-                            • 🔄 Scalability: ${coin.zkDetails.scalability}
-                            ${coin.zkDetails.auditsPassed ? ' • ✅ Audited' : ' • ⏳ Audits Pending'}
+                            ${coin.zkDetails.quantumSafe === true ? ' • <i data-lucide="shield"></i> Quantum Safe' : coin.zkDetails.quantumSafe === false ? ' • <i data-lucide="alert-circle"></i> Not Quantum Safe' : ' • <i data-lucide="alert-circle"></i> Quantum Resistance: TBD'}
+                            • <i data-lucide="trending-up"></i> Scalability: ${coin.zkDetails.scalability}
+                            ${coin.zkDetails.auditsPassed ? ' • <i data-lucide="check-circle"></i> Audited' : ' • <i data-lucide="clock"></i> Audits Pending'}
                         </div>
-                        ${coin.zkDetails.weaknesses ? `<div class="zk-tech-desc" style="margin-top: 0.5rem; font-style: italic;">⚠️ Note: ${coin.zkDetails.weaknesses}</div>` : ''}
+                        ${coin.zkDetails.weaknesses ? `<div class="zk-tech-desc" style="margin-top: 0.5rem; font-style: italic;"><i data-lucide="alert-triangle"></i> Note: ${coin.zkDetails.weaknesses}</div>` : ''}
                     </div>
 
                     <div class="coin-footer">
                         <div class="tech-badge">${coin.technology}</div>
                         <div class="status-badge status-${coin.status}">
-                            ${coin.status === 'verified' ? '✅' : coin.status === 'prelaunch' ? '🔄' : '⏳'} 
+                            ${coin.status === 'verified' ? '<i data-lucide="check-circle"></i>' : coin.status === 'prelaunch' ? '<i data-lucide="refresh-cw"></i>' : '<i data-lucide="clock"></i>'} 
                             ${coin.status === 'verified' ? 'Live' : coin.status === 'prelaunch' ? 'Pre-Launch' : 'Development'}
                         </div>
                     </div>
@@ -2407,7 +2411,7 @@
                 block: 'start'
             });
             
-            showNotification('🔍 ZK Tech Filter Applied', `Filtered coins using ${query.replace(/-/g, ' ')} technology`);
+            showNotification('ZK Tech Filter Applied', `Filtered coins using ${query.replace(/-/g, ' ')} technology`);
         }
 
         // Real-time data update function
@@ -2424,11 +2428,11 @@
                 updateHeaderStats();
                 renderLaunches();
                 
-                showNotification("✅ Data Updated", "Privacy coin data refreshed from live sources");
+                showNotification("Data Updated", "Privacy coin data refreshed from live sources");
                 
             } catch (error) {
                 console.error('Real-time update failed:', error);
-                showNotification("⚠️ Update Failed", "Unable to fetch latest data. Retrying...");
+                showNotification("Update Failed", "Unable to fetch latest data. Retrying...");
             } finally {
                 isLoading = false;
                 renderCoins();
