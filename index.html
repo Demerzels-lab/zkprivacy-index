@@ -649,6 +649,326 @@
             color: var(--text-primary);
         }
 
+        /* ZK Technology Guide Styles */
+        .zk-guide {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            margin: 3rem 0;
+        }
+
+        .zk-overview {
+            margin-bottom: 3rem;
+        }
+
+        .overview-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--primary-purple);
+        }
+
+        .overview-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--primary-teal);
+        }
+
+        .overview-card p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .zk-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .benefit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+        }
+
+        .tech-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-purple);
+            background: var(--hover-bg);
+        }
+
+        .tech-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tech-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .tech-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-teal));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .tech-info {
+            flex: 1;
+        }
+
+        .tech-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .tech-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .tech-score {
+            background: rgba(20, 241, 149, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .tech-content {
+            margin-top: 1rem;
+        }
+
+        .tech-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tech-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .feature {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            padding: 0.25rem 0;
+        }
+
+        .tech-use {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--primary-purple);
+        }
+
+        .tech-comparison {
+            margin-bottom: 3rem;
+        }
+
+        .tech-comparison h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-teal);
+        }
+
+        .comparison-table {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            background: var(--bg-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table-header > div {
+            padding: 1rem;
+            border-right: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .table-header > div:last-child {
+            border-right: none;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            border-top: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+        }
+
+        .table-row:hover {
+            background: var(--hover-bg);
+        }
+
+        .table-row > div {
+            padding: 1rem;
+            border-right: 1px solid var(--border-color);
+            font-size: 0.875rem;
+        }
+
+        .table-row > div:last-child {
+            border-right: none;
+        }
+
+        .evaluation-guide {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .evaluation-guide h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-purple);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .guide-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-teal);
+        }
+
+        .guide-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .guide-item ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .guide-item li {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .guide-item li::before {
+            content: '•';
+            color: var(--primary-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Enhanced Coin Cards with ZK Info */
+        .coin-zk-info {
+            background: rgba(153, 69, 255, 0.1);
+            border: 1px solid var(--primary-purple);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+
+        .zk-tech-name {
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 0.25rem;
+        }
+
+        .zk-tech-desc {
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -690,6 +1010,36 @@
                 align-items: flex-start;
                 gap: 0.75rem;
             }
+
+            .tech-breakdown {
+                grid-template-columns: 1fr;
+            }
+
+            .zk-benefits {
+                gap: 1rem;
+            }
+
+            .table-header,
+            .table-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .table-header > div,
+            .table-row > div {
+                padding: 0.75rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .table-header > div:last-child,
+            .table-row > div:last-child {
+                border-bottom: none;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -703,6 +1053,15 @@
             
             .hero h1 {
                 font-size: 2rem;
+            }
+
+            .tech-breakdown {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tech-features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -731,6 +1090,7 @@
                 <nav>
                     <ul class="nav">
                         <li><a href="#coins" class="nav-link">Coins</a></li>
+                        <li><a href="#zk-technology" class="nav-link">ZK Guide</a></li>
                         <li><a href="#launches" class="nav-link">Upcoming</a></li>
                         <li><a href="#analytics" class="nav-link">Analytics</a></li>
                     </ul>
@@ -748,8 +1108,8 @@
         <div class="container">
             <h1>Real-time Privacy<br>Analytics Platform</h1>
             <p class="hero-subtitle">
-                Live tracking of privacy-focused cryptocurrencies with automatic launch detection 
-                and zero-knowledge verification from multiple data sources.
+                Live tracking of privacy-focused cryptocurrencies with real-time data, comprehensive ZK technology education,
+                automatic launch detection, and zero-knowledge verification from multiple data sources.
             </p>
             <div class="hero-stats">
                 <div class="stat-card">
@@ -774,7 +1134,7 @@
             <div class="section-header">
                 <h2 class="section-title">Live Privacy Coin Rankings</h2>
                 <p class="section-subtitle">
-                    Real-time data from CoinGecko API with privacy score analysis
+                    Real-time data from CoinGecko API with detailed ZK technology analysis and privacy score evaluation
                 </p>
             </div>
 
@@ -814,6 +1174,258 @@
             </div>
         </div>
     </main>
+
+    <!-- ZK Technology Guide Section -->
+    <section class="zk-guide" id="zk-technology">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔐 Zero-Knowledge Technology Guide</h2>
+                <p class="section-subtitle">
+                    Understand the privacy technologies powering next-generation cryptocurrencies
+                </p>
+            </div>
+
+            <!-- ZK Technology Overview -->
+            <div class="zk-overview">
+                <div class="overview-card">
+                    <h3>What is Zero-Knowledge?</h3>
+                    <p>Zero-knowledge proofs allow you to prove that you know something without revealing what it is. In crypto, this means proving a transaction is valid without exposing transaction details.</p>
+                    <div class="zk-benefits">
+                        <div class="benefit">
+                            <span class="benefit-icon">🔒</span>
+                            <span>Complete Privacy</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">⚡</span>
+                            <span>Fast Verification</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">✅</span>
+                            <span>Trustless Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Breakdown -->
+            <div class="tech-breakdown">
+                <div class="tech-card" data-tech="zk-snarks">
+                    <div class="tech-header">
+                        <div class="tech-icon">🧬</div>
+                        <div class="tech-info">
+                            <h3>zk-SNARKs</h3>
+                            <p class="tech-subtitle">Zero-Knowledge Succinct Non-Interactive Argument of Knowledge</p>
+                        </div>
+                        <div class="tech-score">9.0/10</div>
+                    </div>
+                    <div class="tech-content">
+                        <p><strong>How it works:</strong> Creates cryptographic proofs that verify transactions without revealing transaction details or sender/receiver information.</p>
+                        <div class="tech-features">
+                            <div class="feature">✅ Constant-size proofs</div>
+                            <div class="feature">⚡ Fast verification</div>
+                            <div class="feature">🔒 Strong privacy</div>
+                            <div class="feature">⚙️ Trusted setup required</div>
+                        </div>
+                        <p class="tech-use"><strong>Used by:</strong> Zcash, Findora, some Ethereum privacy solutions</p>
+                    </div>
+                </div>
+
+                <div class="tech-card" data-tech="ring-signatures">
+                    <div class="tech-header">
+                        <div class="tech-icon">👥</div>
+                        <div class="tech-info">
+                            <h3>Ring Signatures</h3>
+                            <p class="tech-subtitle">Cryptographic digital signature scheme</p>
+                        </div>
+                        <div class="tech-score">9.2/10</div>
+                    </div>
+                    <div class="tech-content">
+                        <p><strong>How it works:</strong> Mixes your transaction with a group of other transactions, making it impossible to determine which group member actually sent it.</p>
+                        <div class="tech-features">
+                            <div class="feature">🔒 Sender anonymity</div>
+                            <div class="feature">⚡ No trusted setup</div>
+                            <div class="feature">🛡️ Quantum resistant</div>
+                            <div class="feature">💪 Battle-tested</div>
+                        </div>
+                        <p class="tech-use"><strong>Used by:</strong> Monero, several privacy coins</p>
+                    </div>
+                </div>
+
+                <div class="tech-card" data-tech="mimblewimble">
+                    <div class="tech-header">
+                        <div class="tech-icon">🎭</div>
+                        <div class="tech-info">
+                            <h3>Mimblewimble</h3>
+                            <p class="tech-subtitle">Privacy-preserving blockchain protocol</p>
+                        </div>
+                        <div class="tech-score">8.5/10</div>
+                    </div>
+                    <div class="tech-content">
+                        <p><strong>How it works:</strong> Combines transactions in a way that hides all transaction amounts and links while maintaining blockchain validity through cryptographic commitments.</p>
+                        <div class="tech-features">
+                            <div class="feature">💰 Amount privacy</div>
+                            <div class="feature">🔗 Transaction linking hidden</div>
+                            <div class="feature">📊 Scalable design</div>
+                            <div class="feature">⚙️ No addresses needed</div>
+                        </div>
+                        <p class="tech-use"><strong>Used by:</strong> Beam, Grin, some Bitcoin privacy implementations</p>
+                    </div>
+                </div>
+
+                <div class="tech-card" data-tech="zk-starks">
+                    <div class="tech-header">
+                        <div class="tech-icon">⚡</div>
+                        <div class="tech-info">
+                            <h3>zk-STARKs</h3>
+                            <p class="tech-subtitle">Zero-Knowledge Scalable Transparent Argument of Knowledge</p>
+                        </div>
+                        <div class="tech-score">8.8/10</div>
+                    </div>
+                    <div class="tech-content">
+                        <p><strong>How it works:</strong> Similar to SNARKs but without trusted setup, using collision-resistant hash functions instead of elliptic curve pairings.</p>
+                        <div class="tech-features">
+                            <div class="feature">🔓 No trusted setup</div>
+                            <div class="feature">🛡️ Quantum secure</div>
+                            <div class="feature">📈 Highly scalable</div>
+                            <div class="feature">✅ Transparent verification</div>
+                        </div>
+                        <p class="tech-use"><strong>Used by:</strong> StarkNet, some emerging privacy protocols</p>
+                    </div>
+                </div>
+
+                <div class="tech-card" data-tech="coinjoin">
+                    <div class="tech-header">
+                        <div class="tech-icon">🤝</div>
+                        <div class="tech-info">
+                            <h3>CoinJoin</h3>
+                            <p class="tech-subtitle">Transaction mixing protocol</p>
+                        </div>
+                        <div class="tech-score">7.5/10</div>
+                    </div>
+                    <div class="tech-content">
+                        <p><strong>How it works:</strong> Combines multiple transactions from different users into one large transaction, making it difficult to trace individual transactions.</p>
+                        <div class="tech-features">
+                            <div class="feature">👥 Collaborative mixing</div>
+                            <div class="feature">🔄 Voluntary participation</div>
+                            <div class="feature">💸 Simple concept</div>
+                            <div class="feature">⚠️ Timing analysis possible</div>
+                        </div>
+                        <p class="tech-use"><strong>Used by:</strong> JoinMarket, Wasabi Wallet, some Bitcoin privacy tools</p>
+                    </div>
+                </div>
+
+                <div class="tech-card" data-tech="tornado-cash">
+                    <div class="tech-header">
+                        <div class="tech-icon">🌪️</div>
+                        <div class="tech-info">
+                            <h3>Tornado Cash</h3>
+                            <p class="tech-subtitle">zk-SNARK based mixer</p>
+                        </div>
+                        <div class="tech-score">8.2/10</div>
+                    </div>
+                    <div class="tech-content">
+                        <p><strong>How it works:</strong> Uses zk-SNARKs to break the on-chain link between deposit and withdrawal addresses without requiring trusted parties.</p>
+                        <div class="tech-features">
+                            <div class="feature">🔒 Strong privacy guarantees</div>
+                            <div class="feature">⚡ Fast withdrawals</div>
+                            <div class="feature">🛠️ Smart contract based</div>
+                            <div class="feature">⚠️ Regulatory concerns</div>
+                        </div>
+                        <p class="tech-use"><strong>Used by:</strong> Ethereum privacy layer, DeFi protocols</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Comparison -->
+            <div class="tech-comparison">
+                <h3>🔍 Technology Comparison Matrix</h3>
+                <div class="comparison-table">
+                    <div class="table-header">
+                        <div class="tech-col">Technology</div>
+                        <div class="score-col">Privacy Score</div>
+                        <div class="speed-col">Speed</div>
+                        <div class="setup-col">Setup</div>
+                        <div class="quantum-col">Quantum Safe</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="tech-col">Ring Signatures</div>
+                        <div class="score-col">9.2/10</div>
+                        <div class="speed-col">⚡⚡⚡</div>
+                        <div class="setup-col">None</div>
+                        <div class="quantum-col">✅</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="tech-col">zk-SNARKs</div>
+                        <div class="score-col">9.0/10</div>
+                        <div class="speed-col">⚡⚡⚡⚡</div>
+                        <div class="setup-col">Trusted</div>
+                        <div class="quantum-col">❌</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="tech-col">Mimblewimble</div>
+                        <div class="score-col">8.5/10</div>
+                        <div class="speed-col">⚡⚡⚡</div>
+                        <div class="setup-col">None</div>
+                        <div class="quantum-col">⚠️</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="tech-col">zk-STARKs</div>
+                        <div class="score-col">8.8/10</div>
+                        <div class="speed-col">⚡⚡⚡</div>
+                        <div class="setup-col">Transparent</div>
+                        <div class="quantum-col">✅</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What to Look For -->
+            <div class="evaluation-guide">
+                <h3>📋 How to Evaluate Privacy Coins</h3>
+                <div class="guide-grid">
+                    <div class="guide-item">
+                        <div class="guide-icon">🔬</div>
+                        <h4>Technical Analysis</h4>
+                        <ul>
+                            <li>Check the specific privacy technology used</li>
+                            <li>Verify if it's battle-tested or experimental</li>
+                            <li>Look at audit reports and security reviews</li>
+                            <li>Understand the trade-offs (speed vs privacy)</li>
+                        </ul>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">🌐</div>
+                        <h4>Network Health</h4>
+                        <ul>
+                            <li>Active development and community</li>
+                            <li>Number of nodes and decentralization</li>
+                            <li>Exchange listings and liquidity</li>
+                            <li>Real-world adoption and use cases</li>
+                        </ul>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">⚖️</div>
+                        <h4>Regulatory Status</h4>
+                        <ul>
+                            <li>Legal status in major jurisdictions</li>
+                            <li>Compliance with AML/KYC where applicable</li>
+                            <li>Transparency reports and governance</li>
+                            <li>Partnerships with legitimate businesses</li>
+                        </ul>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">🚀</div>
+                        <h4>Future Potential</h4>
+                        <ul>
+                            <li>Roadmap and upcoming features</li>
+                            <li>Scalability and layer-2 solutions</li>
+                            <li>Integration with DeFi and Web3</li>
+                            <li>Innovation in privacy technology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Features Section -->
     <section class="features">
@@ -880,7 +1492,7 @@
             }
         };
 
-        // Privacy coins data
+        // Privacy coins data with enhanced ZK information
         const privacyCoins = [
             {
                 id: 'monero',
@@ -894,7 +1506,15 @@
                 technology: "Ring Signatures",
                 status: "verified",
                 icon: "XMR",
-                description: "Leading privacy-focused cryptocurrency"
+                description: "Leading privacy-focused cryptocurrency",
+                zkDetails: {
+                    type: "Ring Signatures + Stealth Addresses + Ring CT",
+                    privacyLevel: "Complete sender anonymity and transaction unlinkability",
+                    quantumSafe: true,
+                    scalability: "Good - supports scaling solutions",
+                    auditsPassed: true,
+                    weaknesses: "Larger transaction sizes due to ring size requirements"
+                }
             },
             {
                 id: 'zcash',
@@ -908,7 +1528,15 @@
                 technology: "zk-SNARKs",
                 status: "verified",
                 icon: "ZEC",
-                description: "Zero-knowledge proof cryptocurrency"
+                description: "Zero-knowledge proof cryptocurrency",
+                zkDetails: {
+                    type: "zk-SNARKs with Sapling upgrade",
+                    privacyLevel: "Strong privacy with optional transparency",
+                    quantumSafe: false,
+                    scalability: "Excellent - constant proof sizes",
+                    auditsPassed: true,
+                    weaknesses: "Requires trusted setup ceremony"
+                }
             },
             {
                 id: 'beam',
@@ -922,7 +1550,15 @@
                 technology: "Mimblewimble",
                 status: "verified",
                 icon: "BEAM",
-                description: "Scalable privacy cryptocurrency"
+                description: "Scalable privacy cryptocurrency",
+                zkDetails: {
+                    type: "Mimblewimble with Confidential Transactions",
+                    privacyLevel: "Transaction amounts and links hidden",
+                    quantumSafe: "Conditional - depends on implementation",
+                    scalability: "Excellent - compact blockchain",
+                    auditsPassed: true,
+                    weaknesses: "Still developing, smaller adoption"
+                }
             },
             {
                 id: 'grin',
@@ -936,7 +1572,15 @@
                 technology: "Mimblewimble",
                 status: "verified",
                 icon: "GRIN",
-                description: "Minimalist privacy coin"
+                description: "Minimalist privacy coin",
+                zkDetails: {
+                    type: "Pure Mimblewimble implementation",
+                    privacyLevel: "Transaction amounts and links hidden",
+                    quantumSafe: "Conditional - depends on implementation",
+                    scalability: "Excellent - very compact design",
+                    auditsPassed: true,
+                    weaknesses: "Limited features, smaller community"
+                }
             },
             {
                 id: 'findora',
@@ -950,7 +1594,15 @@
                 technology: "zk-SNARKs",
                 status: "verified",
                 icon: "FRA",
-                description: "DeFi privacy platform"
+                description: "DeFi privacy platform",
+                zkDetails: {
+                    type: "zk-SNARKs for DeFi transactions",
+                    privacyLevel: "Selective privacy for DeFi operations",
+                    quantumSafe: false,
+                    scalability: "Good - optimized for DeFi use cases",
+                    auditsPassed: true,
+                    weaknesses: "Newer protocol, less battle-tested"
+                }
             },
             {
                 id: 'aave-privacy',
@@ -964,7 +1616,15 @@
                 technology: "Zero Knowledge",
                 status: "prelaunch",
                 icon: "ALEO",
-                description: "Next-gen zero knowledge platform"
+                description: "Next-gen zero knowledge platform",
+                zkDetails: {
+                    type: "zk-SNARKs with privacy-preserving smart contracts",
+                    privacyLevel: "Complete privacy for applications and transactions",
+                    quantumSafe: "Planned upgrades for quantum resistance",
+                    scalability: "Excellent - designed for scale from ground up",
+                    auditsPassed: false,
+                    weaknesses: "Pre-launch, technical complexity may slow adoption"
+                }
             }
         ];
 
@@ -1136,6 +1796,7 @@
                         </div>
                         <div class="privacy-score">${coin.privacyScore}/10</div>
                     </div>
+                    
                     <div class="coin-stats">
                         <div class="stat-item">
                             <div class="stat-label">Price</div>
@@ -1156,6 +1817,18 @@
                             <div class="stat-value">${coin.technology}</div>
                         </div>
                     </div>
+
+                    <div class="coin-zk-info">
+                        <div class="zk-tech-name">🔐 ${coin.zkDetails.type}</div>
+                        <div class="zk-tech-desc">
+                            ${coin.zkDetails.privacyLevel}
+                            ${coin.zkDetails.quantumSafe === true ? ' • 🛡️ Quantum Safe' : coin.zkDetails.quantumSafe === false ? ' • ⚠️ Not Quantum Safe' : ' • ⚠️ Quantum Resistance: TBD'}
+                            • 🔄 Scalability: ${coin.zkDetails.scalability}
+                            ${coin.zkDetails.auditsPassed ? ' • ✅ Audited' : ' • ⏳ Audits Pending'}
+                        </div>
+                        ${coin.zkDetails.weaknesses ? `<div class="zk-tech-desc" style="margin-top: 0.5rem; font-style: italic;">⚠️ Note: ${coin.zkDetails.weaknesses}</div>` : ''}
+                    </div>
+
                     <div class="coin-footer">
                         <div class="tech-badge">${coin.technology}</div>
                         <div class="status-badge status-${coin.status}">
@@ -1188,14 +1861,69 @@
             renderCoins(filteredCoins);
         }
 
-        // Search functionality
+        // Enhanced Search functionality with ZK technology search
         function searchCoins(query) {
             const filtered = privacyCoins.filter(coin => 
                 coin.name.toLowerCase().includes(query.toLowerCase()) ||
                 coin.symbol.toLowerCase().includes(query.toLowerCase()) ||
-                coin.technology.toLowerCase().includes(query.toLowerCase())
+                coin.technology.toLowerCase().includes(query.toLowerCase()) ||
+                coin.zkDetails.type.toLowerCase().includes(query.toLowerCase()) ||
+                coin.zkDetails.privacyLevel.toLowerCase().includes(query.toLowerCase()) ||
+                (coin.zkDetails.quantumSafe === true && query.toLowerCase().includes('quantum')) ||
+                (coin.zkDetails.auditsPassed === true && query.toLowerCase().includes('audited')) ||
+                (coin.status === 'prelaunch' && query.toLowerCase().includes('prelaunch')) ||
+                (coin.status === 'verified' && query.toLowerCase().includes('live'))
             );
             renderCoins(filtered);
+        }
+
+        // ZK Technology Guide Interactive Features
+        function initializeZKGuide() {
+            // Add click handlers for technology cards
+            document.querySelectorAll('.tech-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const tech = this.getAttribute('data-tech');
+                    highlightTechnology(tech);
+                });
+            });
+
+            // Add comparison table interactivity
+            document.querySelectorAll('.table-row').forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(153, 69, 255, 0.1)';
+                });
+                row.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                });
+            });
+        }
+
+        // Highlight related coins when clicking ZK tech
+        function highlightTechnology(tech) {
+            const techMap = {
+                'zk-snarks': ['zk-snarks', 'snark'],
+                'ring-signatures': ['ring signatures', 'ring'],
+                'mimblewimble': ['mimblewimble'],
+                'zk-starks': ['zk-starks', 'stark'],
+                'coinjoin': ['coinjoin'],
+                'tornado-cash': ['tornado']
+            };
+
+            const searchTerms = techMap[tech] || [tech];
+            const query = searchTerms[0];
+            
+            // Update search box and trigger search
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = query;
+            searchCoins(query);
+            
+            // Scroll to coins section
+            document.querySelector('#coins').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            showNotification('🔍 ZK Tech Filter Applied', `Filtered coins using ${query.replace(/-/g, ' ')} technology`);
         }
 
         // Real-time data update function
@@ -1233,6 +1961,9 @@
             // Load initial data
             updateRealTimeData();
             
+            // Initialize ZK Technology Guide
+            initializeZKGuide();
+            
             // Filter buttons
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1245,7 +1976,7 @@
                 });
             });
             
-            // Search
+            // Search with ZK technology support
             const searchInput = document.getElementById('searchInput');
             searchInput.addEventListener('input', function() {
                 searchCoins(this.value);
