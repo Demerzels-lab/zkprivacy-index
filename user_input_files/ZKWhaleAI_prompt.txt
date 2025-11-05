@@ -1,0 +1,139 @@
+PROJECT TITLE: ZKWhale.AI
+TYPE: Full-stack web application (frontend + backend)
+GOAL: Build a modern monochrome web app where users can create private AI agents to track whale wallets on Axiom, using Zero-Knowledge proofs for privacy and verifiable analytics.
+
+------------------------------------------------------
+🧠 CORE CONCEPT:
+ZKWhale.AI is a stealth intelligence network of AI agents that monitor whale wallet movements in the Axiom ecosystem.
+Users can:
+- Connect their wallet
+- Deploy private AI agents
+- Receive real-time AI-generated insights
+- Verify proofs of data integrity via Zero-Knowledge tech (mocked for MVP)
+
+The web should simulate the presence of many active AI agents scanning Axiom in real time.
+
+------------------------------------------------------
+⚙️ FEATURES:
+
+1. **Connect Wallet**
+   - Add a “Connect Wallet” button (using wagmi or RainbowKit modal).
+   - Generate a mock ZK identity after connection.
+
+2. **Live AI Agent Feed (Frontend Simulation)**
+   - Display real-time scrolling feed of simulated agents:
+     Example updates:
+     • "Agent #0274 detected 120 ETH inflow to 0x9A… — ZK proof verified."
+     • "Agent #1421 is monitoring Axiom yield pools — 3 whales active."
+     • "Agent #0938 flagged token migration from Whale 0xA0… — proof pending."
+   - Each entry fades in/out with smooth grayscale glow animation.
+   - Refresh feed every few seconds (mock backend data source).
+
+3. **Create AI Agent (Frontend Form)**
+   - Simple form to deploy a private agent:
+     • Token/Protocol to track
+     • Whale Threshold (e.g., ≥100 ETH)
+     • Time Frame (24h / 7d)
+   - On submit → generate “Agent deployed” card:
+     → “Agent #2015 Deployed. Monitoring Axiom Pool-X. Status: Active 🟢”
+
+4. **Dashboard (Frontend)**
+   - Grid of active user agents
+   - Each card shows:
+     • Agent ID
+     • Whale addresses tracked
+     • Movement data
+     • AI summary
+     • ZK verification badge
+
+5. **ZK Proof Modal**
+   - Button “Generate ZK Proof” opens modal:
+     • Display proof hash (mock)
+     • Show verification badge (✔️ Verified)
+     • Option to copy/share zk-proof link.
+
+6. **Backend Simulation**
+   - Create backend endpoint `/api/agents` returning mock JSON of ~20 agents:
+     Example fields:
+     {
+       "agentId": "0274",
+       "status": "active",
+       "activity": "Detected 120 ETH inflow",
+       "wallet": "0x9A...",
+       "zkProof": "0xabc123def456...",
+       "timestamp": "2025-11-05T23:40Z"
+     }
+   - Endpoint auto-updates every few seconds with random activity.
+   - Include `/api/deploy` for creating new agent entry (mock persistence in-memory).
+
+------------------------------------------------------
+🎨 UI/UX STYLE:
+
+**Theme:** Monochrome Futurism
+**Colors:** #0A0A0A, #111, #222, #666, #f8f8f8
+**Font:** Inter or Satoshi (bold headings, light body)
+**Layout:**
+- Central grid alignment
+- Rounded cards (border-radius: 2xl)
+- Glassmorphism + soft shadows
+- Smooth fade/slide transitions
+
+**Hero Section:**
+- Tagline: “Thousands of AI Agents are Tracking Axiom Whales — Privately.”
+- Subtext: “Join the ZK intelligence layer. Build your private agent today.”
+- CTA Button: “Connect Wallet to Deploy Agent”
+- Background: Animated network grid with glowing white dots fading in/out (simulating active AI agents).
+
+**Feed Section:**
+- Terminal-like list with glowing grayscale highlights.
+- New lines appear from bottom with typing/fade effect.
+
+**Dashboard Section:**
+- Minimal card layout (2–3 columns)
+- “ZK Verified” badge animation (rotating ring glow)
+- Add filter for “Active / Paused / Private” agents.
+
+------------------------------------------------------
+📁 STRUCTURE:
+
+Frontend:
+- /pages/index.js → Hero + Live Feed
+- /pages/dashboard.js → Agent dashboard
+- /pages/create.js → Create agent form
+- /components/AgentCard.js
+- /components/ProofModal.js
+- /components/LiveFeed.js
+
+Backend:
+- /pages/api/agents.js → Returns mock JSON data of AI agents
+- /pages/api/deploy.js → Accepts new agent creation
+- /lib/agentsData.js → In-memory store for mock agents
+
+------------------------------------------------------
+🧩 TECH STACK:
+
+Frontend:
+- Next.js
+- TailwindCSS
+- Framer Motion (animations)
+- Wagmi or RainbowKit (wallet connect)
+- Lucide-react icons
+
+Backend:
+- Node.js (Next.js API routes)
+- Mock data (no real database)
+- JSON in-memory refresh loop (for agent simulation)
+
+------------------------------------------------------
+✨ EXTRAS:
+
+- Include subtle ambient animation (flowing lines or AI particle glow)
+- Add footer: “ZKWhale.AI — Privacy Meets Intelligence. Powered by Axiom + Zero Knowledge.”
+- When new agent deployed → small pulse animation + success toast.
+
+------------------------------------------------------
+TONE / FEEL:
+Stealth, intelligent, futuristic.
+Everything must feel private, verified, and alive — like a digital swarm of invisible AI agents working on-chain.
+
+END OF FILE
