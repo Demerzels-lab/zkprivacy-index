@@ -111,7 +111,9 @@ Transformasi lengkap UI/UX berdasarkan referensi **x402 Commerce** - https://www
 - **Development tracking** - Monitor progress privacy projects
 - **Community announcements** - Track community buzz dan announcements
 
-## 🪙 **Privacy Coins Tracked (Real-time with ZK Analysis)**
+## 🪙 **Privacy Coins Tracked (17+ Coins - Real-time with ZK Analysis)**
+
+### **🚀 LATEST EXPANSION: 11+ New Privacy Coins Added!**
 
 | Coin | Symbol | Price | Privacy Score | ZK Technology | Quantum Safe | Status | Key Features |
 |------|--------|-------|---------------|---------------|-------------|---------|--------------|
@@ -120,7 +122,17 @@ Transformasi lengkap UI/UX berdasarkan referensi **x402 Commerce** - https://www
 | **Beam** | BEAM | Live | 7.8/10 | Mimblewimble | ⚠️ Conditional | ✅ Live | Scalable, compact blockchain |
 | **Grin** | GRIN | Live | 7.5/10 | Mimblewimble | ⚠️ Conditional | ✅ Live | Minimalist design |
 | **Findora** | FRA | Live | 8.0/10 | zk-SNARKs | ❌ No | ✅ Live | DeFi privacy platform |
-| **Aleo** | ALEO | N/A | 9.0/10 | zk-SNARKs | 🔄 Planned | 🔄 Pre-Launch | Next-gen privacy contracts |
+| **Aleo** | ALEO | Live | 9.0/10 | zk-SNARKs | 🔄 Planned | ✅ Live | Next-gen privacy contracts (Mainnet Sep 2024) |
+| **Secret Network** | SCRT | Live | 8.4/10 | TEE | ❌ No | ✅ Live | Confidential computing blockchain |
+| **Oasis Network** | ROSE | Live | 8.1/10 | Confidential Computing | ❌ No | ✅ Live | Privacy-focused scalable blockchain |
+| **Mina Protocol** | MINA | Live | 8.3/10 | zk-SNARKs | ⚠️ Partial | ✅ Live | Lightweight 22kb blockchain with zkApps |
+| **Iron Fish** | IRON | Live | 8.8/10 | zk-SNARKs | ❌ No | ✅ Live | Universal privacy Layer 1 ($5.3M funded) |
+| **Aztec Network** | AZT | Live | 8.2/10 | zk-Rollups | ❌ No | ✅ Live | Privacy Layer 2 on Ethereum |
+| **Penumbra** | UM | Live | 8.5/10 | zk-SNARKs | ❌ No | ✅ Live | Private DEX for Cosmos ecosystem |
+| **Polygon Nightfall** | NIGHT | Live | 7.8/10 | Hybrid Rollup | ❌ No | ✅ Live | Enterprise privacy rollup |
+| **Obscuro (TEN)** | TEN | Live | 7.9/10 | Encrypted L2 | ❌ No | ✅ Live | Encrypted Layer 2 on Ethereum |
+| **Arcium** | ARC | N/A | 8.6/10 | MPC + FHE | ✅ Yes | 🔄 Pre-Launch | Privacy 2.0 for Solana |
+| **Espresso Systems** | ESP | Live | 7.7/10 | Confidential Transactions | ❌ No | ✅ Live | Privacy and scalability for Web3 |
 
 ### **🔐 Enhanced ZK Information per Coin:**
 Each coin card now includes:
@@ -130,6 +142,19 @@ Each coin card now includes:
 - **Scalability Analysis** - Performance and adoption considerations
 - **Audit Status** - Security review completion
 - **Known Weaknesses** - Transparent limitations and concerns
+
+### **🧪 NEW ZK Technologies Added:**
+- **Trusted Execution Environments (TEE)** - Hardware-secured privacy computing
+- **Multi-Party Computation (MPC)** - Collaborative privacy computing
+- **zk-Rollups** - Privacy Layer 2 scaling solutions
+- **Hybrid Rollups** - Optimistic + ZK combinations for enterprise
+- **Confidential Computing** - Encrypted data processing frameworks
+
+### **📈 Technology Coverage Expansion:**
+- **Before:** 6 privacy coins with 4 core ZK technologies
+- **After:** 17+ privacy coins with 10+ ZK technology categories
+- **Enhanced:** Comprehensive technology comparison matrix dengan quantum safety analysis
+- **Improved:** Search functionality untuk all technology types dan implementations
 
 ## 🎯 **How It Works**
 
